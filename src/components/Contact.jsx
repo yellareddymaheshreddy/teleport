@@ -5,8 +5,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Contact = () => {
-    const k = useRef();
-
+    const btn = useRef();
+    const email=useRef();
+    const firstname=useRef();
+    const message=useRef();
     let toastdesign = {
         position: "top-right",
         autoClose: 5000,
@@ -112,19 +114,31 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        k.current.classList.remove("bg-black")
-        k.current.classList.add("bg-green-600")
-        k.current.querySelector("div").classList.remove("right-[-40px]", "opacity-0")
-        k.current.querySelector("div").classList.add("right-0", "opacity-100")
-        k.current.querySelector("path").style.strokeDashoffset = "0"
+        // checking for empty fields and sending a fail toast
+        let emptyfields=[];
+        if(!firstname.current.value){
+            emptyfields.push("First Name ")
+        }if(!email.current.value){
+            emptyfields.push("Email ")
+        }if(!message.current.value){
+            emptyfields.push("Message ")
+        }
+        if(emptyfields.length!=0){
+            notifyfail(`Please Fill ${emptyfields.toString()}`);
+            return
+        }
+        //changing the design of the send button after click
+        const divs=btn.current.querySelector("div");
+        btn.current.classList.remove("bg-black")
+        btn.current.disabled=true
+        divs.classList.remove("right-[-40px]", "opacity-0")
+        divs.classList.add("right-0", "opacity-100")
+        btn.current.querySelector("path").style.strokeDashoffset = "0"
+
         let details = [];
         form.current.querySelectorAll("input").forEach(input => {
             details.push(input.value)
         });
-        const btn = form.current.querySelector("button")
-        btn.disabled = true;
-        btn.innerText = "Message Sent!"
-
         details.push(form.current.querySelector("textarea").value)
 
         Email.send({
@@ -206,26 +220,26 @@ const Contact = () => {
         }).then(
             message => {
                 notifysuccess(message);
-                btn.disabled = false;
-                btn.innerText = "Send Message";
-                k.current.classList.remove("bg-green-600")
-                k.current.classList.add("bg-black")
-                k.current.querySelector("div").classList.add("right-[-40px]", "opacity-0")
-                k.current.querySelector("div").classList.remove("right-0", "opacity-100")
-                k.current.querySelector("path").style.strokeDashoffset = "34"
+                setTimeout(() => {
+                   
+                    
+                    btn.current.disabled = false;
+                    btn.current.classList.add("bg-black")
+                    divs.classList.add("right-[-40px]", "opacity-0")
+                    divs.classList.remove("right-0", "opacity-100")
+                    btn.current.querySelector("path").style.strokeDashoffset = "34"
+                }, 5000);
             }
 
         ).catch(
             message => {
                 notifyfail(message)
-                btn.disabled = false;
-                btn.innerText = "ReSend Message";
-                btn.classList.add("bg-green-700")
-                k.current.classList.remove("bg-green-600")
-                k.current.classList.add("bg-black")
-                k.current.querySelector("div").classList.add("right-[-40px]", "opacity-0")
-                k.current.querySelector("div").classList.remove("right-0", "opacity-100")
-                k.current.querySelector("path").style.strokeDashoffset = "34"
+                
+                btn.current.disabled=false;
+                btn.current.classList.add("bg-blue-600")
+                divs.classList.add("right-[-40px]", "opacity-0")
+                divs.classList.remove("right-0", "opacity-100")
+                btn.current.querySelector("path").style.strokeDashoffset = "34"
             }
         );
     }
@@ -278,6 +292,7 @@ const Contact = () => {
                                                     id="first_name"
                                                     placeholder="First Name"
                                                     name='user_firstname'
+                                                    ref={firstname}
                                                 />
                                             </div>
                                             <div className="grid w-full  items-center gap-1.5">
@@ -309,6 +324,7 @@ const Contact = () => {
                                                 id="email"
                                                 placeholder="Email"
                                                 name='user_email'
+                                                ref={email}
                                             />
                                         </div>
                                         <div className="grid w-full  items-center gap-1.5">
@@ -339,19 +355,20 @@ const Contact = () => {
                                                 placeholder="Leave us a message"
                                                 cols="3"
                                                 name='message'
+                                                ref={message}
                                             ></textarea>
                                         </div>
 
-                                        <button id='animatebtn'
+                                        {/* <button id='animatebtn'
                                             type="\"
                                             value="send"
                                             className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-all duration-1000 disabled:bg-red-500"
                                         >
                                             <p >Send Message</p>
 
-                                        </button>
+                                        </button> */}
                                         <div className='w-full flex justify-center items-center'>
-                                            <button ref={k} style={{ width: "270px", height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full'>
+                                            <button ref={btn} style={{ width: "270px", height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 '>
                                                 <p>Send Message</p>
                                                 <div style={{
                                                     width: "60px",
@@ -361,7 +378,7 @@ const Contact = () => {
                                                     position: "absolute",
                                                     top: "0",
                                                     transition: "1s",
-                                                }} className='right-[-40px] opacity-0'>
+                                                }} className='right-[-40px] opacity-0 '>
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" style={{
                                                         width: "40px",
                                                         margin: "10px"
