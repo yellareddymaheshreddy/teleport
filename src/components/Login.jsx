@@ -4,6 +4,8 @@ import { login as authLogin } from '../store/authSlice'
 import { useDispatch } from "react-redux"
 import authService from "../appwrite/auth"
 import { useForm } from "react-hook-form"
+import { toast, Bounce } from 'react-toastify';
+
 
 function Login() {
     const navigate = useNavigate()
@@ -12,16 +14,31 @@ function Login() {
     const [error, setError] = useState("")
 
     const login = async (data) => {
+        let toastdesign = {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+        }
+        const notifysuccess = (text) => toast.success(`${text} !`, toastdesign);
+        const notifyfail = (text) => toast.error(`${text}!`, toastdesign);
         setError("")
         try {
             const session = await authService.login(data)
             if (session) {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(authLogin(userData));
+                notifysuccess("Login Successful!")
                 navigate("/")
             }
         } catch (error) {
             setError(error.message)
+            notifyfail("Failed to Login")
         }
     }
 

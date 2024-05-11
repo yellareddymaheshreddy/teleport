@@ -14,10 +14,15 @@ import store from './store/store.js'
 import AuthLayout from './components/AuthLayout.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/signup.jsx'
+import Home from './components/Home.jsx'
+import Post from './components/Post.jsx'
+import Allrides from './components/Allrides.jsx'
+import EditRide from './components/EditRide.jsx'
 const router = createBrowserRouter([{
   path: "/",
   element: <AuthLayout authentication={false}><App /></AuthLayout>,
   errorElement: <><Navbar />
+  
     <ErrorPage />
     <Footer />
   </>,
@@ -25,7 +30,8 @@ const router = createBrowserRouter([{
   children: [
     {
       path: "",
-      element: <AuthLayout authentication><Landingpage /></AuthLayout>,
+      element: <AuthLayout authentication><Landingpage />
+      <Home/></AuthLayout>,
     },
     {
       path: "about",
@@ -50,62 +56,33 @@ const router = createBrowserRouter([{
           <Signup />
         </AuthLayout>
       ),
+      
     },
+    {
+      path: "/all-posts",
+      element: (
+          <AuthLayout authentication>
+              {" "}
+              <Allrides/>
+          </AuthLayout>
+      ),
+  },
+  {
+    path: "/post/:slug",
+    element: <Post />,
+},
+{
+  path: "/edit-post/:slug",
+  element: (
+      <AuthLayout authentication>
+          {" "}
+          <EditRide />
+      </AuthLayout>
+  ),
+},
   ]
 }])
-/*
-{
-            path: "/",
-            element: <Home />,
-        },
-        {
-            path: "/login",
-            element: (
-                <AuthLayout authentication={false}>
-                    <Login />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/signup",
-            element: (
-                <AuthLayout authentication={false}>
-                    <Signup />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/all-posts",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <AllPosts />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/add-post",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <AddPost />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/edit-post/:slug",
-            element: (
-                <AuthLayout authentication>
-                    {" "}
-                    <EditPost />
-                </AuthLayout>
-            ),
-        },
-        {
-            path: "/post/:slug",
-            element: <Post />,
-        },
-*/
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

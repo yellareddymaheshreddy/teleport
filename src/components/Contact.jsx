@@ -373,8 +373,8 @@ const Contact = () => {
                                             <p >Send Message</p>
 
                                         </button> */}
-                                        <div className='w-full flex justify-center items-center'>
-                                            <button ref={btn} style={{ width: "270px", height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 '>
+                                        <div className='w-full flex justify-center items-center '>
+                                            <button ref={btn} style={{  height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 mt-8'>
                                                 <p>Send Message</p>
                                                 <div style={{
                                                     width: "60px",

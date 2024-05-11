@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import LogoutBtn from './LogoutBtn'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import '../index.css'
 
 const Navbar = () => {
   const authStatus = useSelector((state) => state.auth.status)
@@ -11,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="relative w-full bg-white">
-      {menu&&<div className='absolute right-[23px] top-[80px] bg-[#f6f6f6] rounded-xl p-8 w-[12rem] pink-shadow font-bold'>
+      {menu&&<div className='absolute right-[23px] top-[80px] bg-[#f6f6f6] rounded-xl p-8 w-[12rem] black-shadow font-bold'>
         <ul className="menu bg-base-200 w-fit rounded-box flex flex-col gap-4">
           <li>
             <NavLink className={({ isActive }) => `flex gap-2 items-center hover:text-fuchsia-600 ${isActive? "text-fuchsia-600" : ""}`} to={"/"} onClick={() => { setmenu(false) }}>
