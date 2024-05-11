@@ -3,13 +3,13 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-      <hr class="mt-6" />
-            <section class="relative overflow-hidden bg-white py-8">
-                <div class="container relative z-10 mx-auto px-4">
-                    <div class="-m-8 flex flex-wrap items-center justify-between">
-                        <div class="w-auto p-8">
+      <hr className="mt-6" />
+            <section className="relative overflow-hidden bg-white py-8">
+                <div className="container relative z-10 mx-auto px-4">
+                    <div className="-m-8 flex flex-wrap items-center justify-between">
+                        <div className="w-auto p-8">
                             <a href="#">
-                                <div class="inline-flex items-center">
+                                <div className="inline-flex items-center">
                                     <svg
                                         width="40"
                                         height="46"
@@ -22,39 +22,39 @@ const Footer = () => {
                                             fill="black"
                                         ></path>
                                     </svg>
-                                    <span class="ml-4 text-lg font-bold">DevUI</span>
+                                    <span className="ml-4 text-lg font-bold">DevUI</span>
                                 </div>
                             </a>
                         </div>
-                        <div class="w-auto p-8">
-                            <ul class="-m-5 flex flex-wrap items-center">
-                                <li class="p-5">
-                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                        <div className="w-auto p-8">
+                            <ul className="-m-5 flex flex-wrap items-center">
+                                <li className="p-5">
+                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
                                         Privacy Policy
                                     </a>
                                 </li>
-                                <li class="p-5">
-                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                <li className="p-5">
+                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
                                         Terms of Service
                                     </a>
                                 </li>
-                                <li class="p-5">
-                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                <li className="p-5">
+                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
                                         Return Policy
                                     </a>
                                 </li>
-                                <li class="p-5">
-                                    <a class="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                <li className="p-5">
+                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
                                         Contact Us
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="w-auto p-8">
-                            <div class="-m-1.5 flex flex-wrap">
-                                <div class="w-auto p-1.5">
+                        <div className="w-auto p-8">
+                            <div className="-m-1.5 flex flex-wrap">
+                                <div className="w-auto p-1.5">
                                     <a href="#">
-                                        <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                                             <svg
                                                 width="8"
                                                 height="14"
@@ -70,9 +70,9 @@ const Footer = () => {
                                         </div>
                                     </a>
                                 </div>
-                                <div class="w-auto p-1.5">
+                                <div className="w-auto p-1.5">
                                     <a href="#">
-                                        <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                                             <svg
                                                 width="14"
                                                 height="11"
@@ -88,9 +88,9 @@ const Footer = () => {
                                         </div>
                                     </a>
                                 </div>
-                                <div class="w-auto p-1.5">
+                                <div className="w-auto p-1.5">
                                     <a href="#">
-                                        <div class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
+                                        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                                             <svg
                                                 width="16"
                                                 height="15"

@@ -1,38 +1,238 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
-
-
-
 const Contact = () => {
-    const notify = () => toast("Message sent!");
+    const k = useRef();
+
+    let toastdesign = {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+    }
+    const notifysuccess = (text) => toast.success(`${text} Message sent!`, toastdesign);
+    const notifyfail = (text) => toast.error(`${text}!`, toastdesign);
     const form = useRef();
+
+    const sendEmailtocustomer = (e) => {
+        e.preventDefault();
+
+        // emailjs
+        //     .sendForm('service_je28889', 'template_fp4emog', form.current, {
+        //         publicKey: 'fURV-yVGhcU617Pkm',
+        //     })
+        //     .then(
+        //         () => {
+        //             console.log('SUCCESS!');
+        //             form.current.querySelectorAll("Input").forEach(input => {
+        //                 input.value = ""
+        //             });
+        //             form.current.querySelector("textarea").value = ""
+        //         },
+        //         (error) => {
+        //             console.log('FAILED...', error.text);
+        //         },
+        //     );
+    };
+
+    var Email = {
+        send: function (a) {
+            return new Promise(function (resolve, reject) {
+                a.nocache = Math.floor(1e6 * Math.random() + 1);
+                a.Action = "Send";
+                var t = JSON.stringify(a);
+                Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (response) {
+                    resolve(response);
+                }, function (error) {
+                    reject("Failed to send message");
+                });
+            });
+        },
+        ajaxPost: function (url, data, successCallback, errorCallback) {
+            var request = Email.createCORSRequest("POST", url);
+            if (!request) {
+                errorCallback("CORS not supported");
+                return;
+            }
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.onload = function () {
+                var response = request.responseText;
+                if (successCallback) {
+                    successCallback(response);
+                }
+            };
+            request.onerror = function () {
+                if (errorCallback) {
+                    errorCallback("Error occurred during AJAX POST");
+                }
+            };
+            request.send(data);
+        },
+        ajax: function (url, successCallback, errorCallback) {
+            var request = Email.createCORSRequest("GET", url);
+            if (!request) {
+                errorCallback("CORS not supported");
+                return;
+            }
+            request.onload = function () {
+                var response = request.responseText;
+                if (successCallback) {
+                    successCallback(response);
+                }
+            };
+            request.onerror = function () {
+                if (errorCallback) {
+                    errorCallback("Error occurred during AJAX GET");
+                }
+            };
+            request.send();
+        },
+        createCORSRequest: function (method, url) {
+            var xhr = new XMLHttpRequest();
+            if ("withCredentials" in xhr) {
+                xhr.open(method, url, true);
+            } else if (typeof XDomainRequest != "undefined") {
+                xhr = new XDomainRequest();
+                xhr.open(method, url);
+            } else {
+                xhr = null;
+            }
+            return xhr;
+        }
+    };
+
 
     const sendEmail = (e) => {
         e.preventDefault();
+        k.current.classList.remove("bg-black")
+        k.current.classList.add("bg-green-600")
+        k.current.querySelector("div").classList.remove("right-[-40px]", "opacity-0")
+        k.current.querySelector("div").classList.add("right-0", "opacity-100")
+        k.current.querySelector("path").style.strokeDashoffset = "0"
+        let details = [];
+        form.current.querySelectorAll("input").forEach(input => {
+            details.push(input.value)
+        });
+        const btn = form.current.querySelector("button")
+        btn.disabled = true;
+        btn.innerText = "Message Sent!"
 
-        emailjs
-            .sendForm('service_je28889', 'template_fp4emog', form.current, {
-                publicKey: 'fURV-yVGhcU617Pkm',
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                },
-            );
-    };
+        details.push(form.current.querySelector("textarea").value)
+
+        Email.send({
+            SecureToken: "7833a18c-3c81-4383-9707-7fb7d7d6e319",
+            To: 'mahesh.contactus@gmail.com',
+            From: "mahesh.contactus@gmail.com",
+            Subject: `Teleport : ${details[0]} contacted You!`,
+            Body: `<body style="margin: 0;padding: 0;">
+            <div
+                style="background-color: black; background-color: black;color: white; display: flex;
+                flex-direction:column; align-items: center; justify-content: center; padding-block: 2rem; overflow-x: hidden;overflow-y: hidden; overflow: hidden;max-width: 100vw; ">
+                <div style="min-width: 100vw;">
+                    <p style="font-size: 2.25rem; line-height: 2.5rem;font-weight: 700;margin: 4vw;">
+                        Hello <span style="color: purple;">Mahesh Reddy</span>,
+                    </p>
+                    <p style=" color: azure; margin: 4vw;">
+                        You got a new message from <a href="https://maheshreddy.online/"
+                            style=" color:aqua;;">Teleport</a> :
+                    </p>
+                    <hr style="margin: 4vw;">
+
+                    <div style="margin: 8vw">
+                        <div style=" display: grid; width: 270px; row-gap: 1rem">
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    First Name
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[0]}
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Last Name
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[1]}
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Email
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[2]}
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Phone
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[3]}
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Message
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem;min-height: 66px;">
+                                    ${details[4]}
+                                </div>
+                            </div>
+                        <button 
+                            style="background-color: purple;border: none; border-radius: 4px; padding: 8px; color: white; font-weight: 600;margin-top: 24px;"
+                            >
+                            <a href="https://maheshreddy.online/"
+                                style=" color: inherit; text-decoration: inherit;">Visit
+                                Website</a> </button>
+                        </form>
+                    </div>
+                </div>
+        </body>`
+        }).then(
+            message => {
+                notifysuccess(message);
+                btn.disabled = false;
+                btn.innerText = "Send Message";
+                k.current.classList.remove("bg-green-600")
+                k.current.classList.add("bg-black")
+                k.current.querySelector("div").classList.add("right-[-40px]", "opacity-0")
+                k.current.querySelector("div").classList.remove("right-0", "opacity-100")
+                k.current.querySelector("path").style.strokeDashoffset = "34"
+            }
+
+        ).catch(
+            message => {
+                notifyfail(message)
+                btn.disabled = false;
+                btn.innerText = "ReSend Message";
+                btn.classList.add("bg-green-700")
+                k.current.classList.remove("bg-green-600")
+                k.current.classList.add("bg-black")
+                k.current.querySelector("div").classList.add("right-[-40px]", "opacity-0")
+                k.current.querySelector("div").classList.remove("right-0", "opacity-100")
+                k.current.querySelector("path").style.strokeDashoffset = "34"
+            }
+        );
+    }
     return (
 
         <div>
-            
-            <ToastContainer />
+
             <div>
                 <div className="mx-auto max-w-7xl px-4">
                     <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
@@ -60,7 +260,10 @@ const Contact = () => {
                                     <p className="mt-4 text-lg text-gray-600">
                                         Our friendly team would love to hear from you.
                                     </p>
-                                    <form ref={form} onSubmit={sendEmail} className="mt-8 space-y-4">
+                                    <form ref={form} onSubmit={(e) => {
+                                        sendEmail(e);
+                                        sendEmailtocustomer(e);
+                                    }} className="mt-8 space-y-4">
                                         <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
                                             <div className="grid w-full  items-center gap-1.5">
                                                 <label
@@ -70,7 +273,7 @@ const Contact = () => {
                                                     First Name
                                                 </label>
                                                 <input
-                                                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                     type="text"
                                                     id="first_name"
                                                     placeholder="First Name"
@@ -85,7 +288,7 @@ const Contact = () => {
                                                     Last Name
                                                 </label>
                                                 <input
-                                                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                     type="text"
                                                     id="last_name"
                                                     placeholder="Last Name"
@@ -101,7 +304,7 @@ const Contact = () => {
                                                 Email
                                             </label>
                                             <input
-                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                 type="text"
                                                 id="email"
                                                 placeholder="Email"
@@ -116,7 +319,7 @@ const Contact = () => {
                                                 Phone number
                                             </label>
                                             <input
-                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                 type="tel"
                                                 id="phone_number"
                                                 placeholder="Phone number"
@@ -131,21 +334,49 @@ const Contact = () => {
                                                 Message
                                             </label>
                                             <textarea
-                                                className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
+                                                className="flex h-10 w-full rounded-md border text-black  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700  dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                 id="message"
                                                 placeholder="Leave us a message"
                                                 cols="3"
                                                 name='message'
                                             ></textarea>
                                         </div>
-                                        <button
-                                            type="submit"
+
+                                        <button id='animatebtn'
+                                            type="\"
                                             value="send"
-                                            className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                                            onClick={notify}
+                                            className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black transition-all duration-1000 disabled:bg-red-500"
                                         >
-                                            Send Message
+                                            <p >Send Message</p>
+
                                         </button>
+                                        <div className='w-full flex justify-center items-center'>
+                                            <button ref={k} style={{ width: "270px", height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full'>
+                                                <p>Send Message</p>
+                                                <div style={{
+                                                    width: "60px",
+                                                    height: "60px",
+                                                    "border-radius": "40px",
+                                                    "box-shadow": "0 0 12px -2px rgba(0,0,0,0.5)",
+                                                    position: "absolute",
+                                                    top: "0",
+                                                    transition: "1s",
+                                                }} className='right-[-40px] opacity-0'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" style={{
+                                                        width: "40px",
+                                                        margin: "10px"
+                                                    }}>
+                                                        <path className='delay-1000 transition-all' fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" style={{
+                                                            "stroke-width": 3,
+                                                            stroke: " #fff",
+                                                            "stroke-dasharray": 34,
+                                                            "stroke-dashoffset": 34,
+                                                            "stroke-linecap": "round",
+                                                        }} />
+                                                    </svg>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -159,6 +390,7 @@ const Contact = () => {
                 </div>
                 <hr className="mt-6" />
             </div>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
 
         </div>
     )
