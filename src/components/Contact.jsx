@@ -134,6 +134,7 @@ const Contact = () => {
         divs.classList.remove("right-[-40px]", "opacity-0")
         divs.classList.add("right-0", "opacity-100")
         btn.current.querySelector("path").style.strokeDashoffset = "0"
+        btn.current.querySelector("p").innerText="Message Sent!";
 
         let details = [];
         form.current.querySelectorAll("input").forEach(input => {
@@ -220,9 +221,13 @@ const Contact = () => {
         }).then(
             message => {
                 notifysuccess(message);
+                form.current.querySelectorAll("Input").forEach(input => {
+                    input.value=""
+                });
+                form.current.querySelector("textarea").value=""
                 setTimeout(() => {
                    
-                    
+                    btn.current.querySelector("p").innerText="Send Message";
                     btn.current.disabled = false;
                     btn.current.classList.add("bg-black")
                     divs.classList.add("right-[-40px]", "opacity-0")
@@ -240,6 +245,7 @@ const Contact = () => {
                 divs.classList.add("right-[-40px]", "opacity-0")
                 divs.classList.remove("right-0", "opacity-100")
                 btn.current.querySelector("path").style.strokeDashoffset = "34"
+                btn.current.querySelector("p").innerText="ReSend Message";
             }
         );
     }
