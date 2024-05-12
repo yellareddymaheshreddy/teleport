@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import appwriteService from "../appwrite/config";
 import RideCard from './RideCard';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const [posts, setPosts] = useState([])
+    const navigate=useNavigate();
 
     useEffect(() => {
         appwriteService.getPosts().then((posts) => {
             if (posts) {
                 setPosts(posts.documents)
+                console.log(posts[0])
             }
         })
     }, [])
@@ -22,6 +25,18 @@ function Home() {
                             <h1 className="text-2xl font-bold hover:text-gray-500">
                                 Login to read posts
                             </h1>
+                            <button onClick={()=>{
+                                
+                                navigate("/all-posts")
+                            }}>
+                                allposts
+
+                            </button>
+                            <button onClick={()=>{
+                                navigate("/edit-post/slug")
+                            }}>
+                                editpost
+                            </button>
                         </div>
                     </div>
                 </div>

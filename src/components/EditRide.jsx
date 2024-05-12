@@ -2,32 +2,34 @@ import React,{useState,useEffect} from 'react'
 import PostForm from './PostForm'
 import service from '../appwrite/config'
 import { useNavigate, useParams } from 'react-router-dom'
+import { notifyfail,notifysuccess } from './toast'
 
 const EditRide = () => {
     const [ride, setrides] = useState(null)
-    const {date}=useParams();
-    navigate=useNavigate();
+    const {slug}=useParams();
+    const navigate=useNavigate();
 
     useEffect(() => {
-      first
-    
-      return () => {
-        if(date){
-            service.getPost(date).then((ride)=>{
+        if(slug){
+            service.getPost(slug).then((ride)=>{
                 if(ride){
                     setrides(ride)
                 }
                 else{
-                    navigate("/")
+                    // navigate("/")
+                    notifyfail("failed to load")
+
                 }
+            }).catch((error)=>{
+                notifyfail(error)
             })
         }
-      }
-    }, [date,navigate])
+    }, [slug,navigate])
+
     
     return ride?(
         <div>
-            <PostForm/>
+            <PostForm ride={ride}/>
         </div>
     ):(null);
 }

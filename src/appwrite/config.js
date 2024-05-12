@@ -14,20 +14,22 @@ export class Service {
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({ From, to, Vechicle, Numberofpassengers, Date_of_ride, Createdby, Message, Rideid }) {
+    async createPost({ From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message,Rideid}) {
         try {
+            console.log(Rideid ,"inapprite")
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 Rideid,
                 {
                     From,
-                    to,
+                    To,
                     Vechicle,
-                    Numberofpassengers,
-                    Date_of_ride,
+                    NumberofPassengers,
+                    DateofRide,
                     Createdby,
                     Message,
+                    Rideid
                 }
             )
         } catch (error) {
@@ -35,7 +37,7 @@ export class Service {
         }
     }
 
-    async updatePost(Rideid, { From, to, Vechicle, Numberofpassengers, Date_of_ride, Createdby, Message }) {
+    async updatePost(Rideid, { From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message }) {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -43,10 +45,10 @@ export class Service {
                 Rideid,
                 {
                     From,
-                    to,
+                    To,
                     Vechicle,
-                    Numberofpassengers,
-                    Date_of_ride,
+                    NumberofPassengers,
+                    DateofRide,
                     Createdby,
                     Message,
                 }
@@ -71,16 +73,16 @@ export class Service {
         }
     }
 
-    async getPost(Rideid) {
+    async getPost(id) {
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                Rideid
+                id
 
             )
         } catch (error) {
-            console.log("Appwrite serive :: getPost :: error", error);
+            console.log("Appwrite serive :: getPost :: error", error, "i",id);
             return false
         }
     }

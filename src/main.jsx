@@ -18,9 +18,13 @@ import Home from './components/Home.jsx'
 import Post from './components/Post.jsx'
 import Allrides from './components/Allrides.jsx'
 import EditRide from './components/EditRide.jsx'
+import CreateRide from './components/CreateRide.jsx'
 const router = createBrowserRouter([{
   path: "/",
-  element: <AuthLayout authentication={false}><App /></AuthLayout>,
+  element: 
+  // <AuthLayout authentication={false}>
+    <App />,
+    // </AuthLayout>,
   errorElement: <><Navbar />
   
     <ErrorPage />
@@ -31,7 +35,7 @@ const router = createBrowserRouter([{
     {
       path: "",
       element: <AuthLayout authentication><Landingpage />
-      <Home/></AuthLayout>,
+      </AuthLayout>,
     },
     {
       path: "about",
@@ -74,9 +78,18 @@ const router = createBrowserRouter([{
 {
   path: "/edit-post/:slug",
   element: (
+      // <AuthLayout authentication>
+          // {" "}
+          <EditRide />
+      // </AuthLayout>
+  ),
+},
+{
+  path: "/add-post",
+  element: (
       <AuthLayout authentication>
           {" "}
-          <EditRide />
+          <CreateRide />
       </AuthLayout>
   ),
 },
