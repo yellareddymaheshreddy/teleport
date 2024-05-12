@@ -57,7 +57,7 @@ const PostForm = ({ ride }) => {
         <div class="mx-auto my-4 max-w-4xl md:my-6">
             <div class="overflow-hidden  rounded-xl shadow">
                 <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="px-5 py-6 text-gray-900 md:px-8">
+                    <div class="mx-3 px-2 py-6 text-gray-900 md:px-8 shadow-lg rounded-lg border overflow-hidden">
                         <div class="flow-root">
                             <div class="-my-6 divide-y divide-gray-200">
                                 <div class="py-6">
@@ -106,7 +106,7 @@ const PostForm = ({ ride }) => {
                                                 <h3 class="text-lg font-semibold text-gray-900">
                                                     Vechicle details
                                                 </h3>
-                                                <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
+                                                <div class="mt-6 grid  gap-x-4 gap-y-6 sm:grid-cols-4">
 
                                                     <div class="col-span-2 ">
                                                         <label

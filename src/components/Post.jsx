@@ -33,11 +33,11 @@ export default function Post() {
     };
 
     return post ? (
-        <div class="mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
+        <div class="mx-3 md:mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-4 sm:p-10 sm:px-2 shadow-lg rounded-lg border">
             <h2 class="text-3xl font-bold">Ride Details:</h2>
             <div class="space-y-1 flex">
                 <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                    Message:
+                    Message:&nbsp;
                 </h3>
                 <p class="mt-3 text-sm font-medium text-gray-700">{post.Message}</p>
             </div>
@@ -53,7 +53,7 @@ export default function Post() {
                             <div class="flex w-full justify-between space-x-2 pb-2">
                                 <div class="space-y-1 flex">
                                     <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                                        From:
+                                        From:&nbsp;
                                     </h3>
                                     <p class="text-sm">{post.From}</p>
                                 </div>
@@ -62,7 +62,7 @@ export default function Post() {
                             <div class="flex w-full justify-between space-x-2 pb-2">
                                 <div class="space-y-1 flex">
                                     <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                                        To:
+                                        To:&nbsp;
                                     </h3>
                                     <p class="text-sm">{post.To}</p>
                                 </div>
@@ -73,13 +73,13 @@ export default function Post() {
                     </div>
                 </li>
                 <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
-                    <div class="flex w-full space-x-2 sm:space-x-4">
-                       
+                    {/* <div class="flex w-full space-x-2 sm:space-x-4"> */}
+
                         <div class="flex w-full flex-col justify-between pb-4">
                             <div class="flex w-full justify-between space-x-2 pb-2">
                                 <div class="space-y-1 flex">
                                     <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                                        Number of Passengers
+                                        Number of Passengers : &nbsp;
                                     </h3>
                                     <p class="text-sm">{post.NumberofPassengers}</p>
                                 </div>
@@ -88,32 +88,32 @@ export default function Post() {
                             <div class="flex w-full justify-between space-x-2 pb-2">
                                 <div class="space-y-1">
                                     <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                                        Date of Ride  :
+                                        Date of Ride  :&nbsp;
                                     </h3>
                                     <p class="text-sm">{post.DateofRide}</p>
                                 </div>
 
-                            </div>
+                            {/* </div> */}
 
                         </div>
-                        <div class="flex w-full flex-col justify-between pb-4">
-                            <div class="flex w-full justify-between space-x-2 pb-2">
-                                <div class="space-y-1 flex">
-                                    <h3 class="text-lg font-semibold leading-snug sm:pr-8">
-                                        Vechicle: 
-                                    </h3>
-                                    <p class="text-sm">{post.Vechicle}</p>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
+
                     </div>
                 </li>
                 <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
                     <div class="flex w-full space-x-2 sm:space-x-4">
-                        
-                        
+
+                        <div class="flex w-full flex-col justify-between pb-4">
+                            <div class="flex w-full justify-between space-x-2 pb-2">
+                                <div class="space-y-1 flex">
+                                    <h3 class="text-lg font-semibold leading-snug sm:pr-8">
+                                        Vechicle:&nbsp;
+                                    </h3>
+                                    <p class="text-sm">{post.Vechicle}</p>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
                 </li>
             </ul>

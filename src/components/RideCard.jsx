@@ -1,20 +1,24 @@
 import React from 'react'
 import service from '../appwrite/config'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, DateofRide }) => {
+  const navigate =useNavigate();
   return (
-    <Link to={`/post/${$id}`}>
-      <tbody class="divide-y divide-gray-200 bg-white">
-        <tr className='w-full'>
+    
+    <>
+      
+    {/* <Link to={`/post/${$id}`}> */}
           <td class="whitespace-nowrap px-4 py-4">
-            <div class="flex items-center">
+            <div class="flex items-center" onClick={()=>{
+              navigate(`/post/${$id}`)
+            }}>
               <div class="h-10 w-10 flex-shrink-0">
                 <img
                   class="h-10 w-10 rounded-full object-cover"
                   src="/favicon.svg"
                   alt=""
-                />
+                  />
               </div>
               <div class="ml-4">
                 <div class="text-sm font-medium text-gray-900">
@@ -36,15 +40,15 @@ const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, Dateof
           <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-700">
             {DateofRide}
           </td>
-          <td class="whitespace-nowrap px-4 py-4 text-right text-sm font-medium">
+          <td class="whitespace-nowrap px-4 py-4 text-center text-sm font-medium ">
             <a href="#" class="text-gray-700">
               {NumberofPassengers}
             </a>
           </td>
-        </tr>
+     {/* </Link> */}
+                  
+        </>
 
-        </tbody>
-    </Link>
   )
 }
 
