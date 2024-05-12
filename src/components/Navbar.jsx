@@ -41,9 +41,11 @@ const Navbar = () => {
         </ul>
       </div>}
       <div className="mx-auto flex min-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8 min-h-24">
-        <div className="inline-flex items-center space-x-2">
+        <div className="inline-flex items-center space-x-2" onClick={()=>{
+          navigate("/")
+        }}>
           <span>
-            <img src="/favicon.svg" alt="" height={40} width={40} />
+            <img src="/favicon.svg" alt="" height={35} width={35} />
           </span>
           <span className="font-bold text-xl">Teleport</span>
         </div>

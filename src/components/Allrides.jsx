@@ -77,29 +77,29 @@ const Allrides = () => {
                     <tr>
                       <th
                         scope="col"
-                        class="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                        class="px-4 py-3.5 text-left font-medium text-gray-700"
                       >
-                        <span>Employee</span>
+                        <span>Ride Details</span>
                       </th>
                       <th
                         scope="col"
-                        class="px-12 py-3.5 text-left text-sm font-normal text-gray-700"
+                        class="px-16 py-3.5 text-left text-sm font-normal text-gray-700 border-x"
                       >
                         Message
                       </th>
                       <th
                         scope="col"
-                        class="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                        class="px-4 py-3.5  text-sm font-normal text-gray-700"
                       >
                         Vechicle
                       </th>
                       <th
                         scope="col"
-                        class="px-4 py-3.5 text-left text-sm font-normal text-gray-700"
+                        class="px-4 py-3.5 text-sm font-normal text-gray-700 border-x"
                       >
                         Date
                       </th>
-                      <th scope="col" class="relative px-4 py-3.5 ">
+                      <th scope="col" class="relative px-4 py-3.5 text-gray-500 text-sm">
                         <span >No.of Passengers</span>
                       </th>
                     </tr>
