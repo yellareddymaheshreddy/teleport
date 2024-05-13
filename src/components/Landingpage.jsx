@@ -2,22 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Carousel from './Carousel';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import service from '../appwrite/config';
-import { setrides } from '../store/ridesSlice';
+
 
 
 const Landingpage = () => {
-    const dispatch =useDispatch();
-    React.useEffect(() => {
-        service.getPosts().then((rides) => {
-            if (rides) {
-            dispatch(setrides(rides.documents))
-            }
-          })
-    }, [])
-    
-  
+
     const navigate = useNavigate();
     const images = ["rideshare1.png", "rideshare2.png"];
     return (

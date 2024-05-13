@@ -10,7 +10,6 @@ export default function Post() {
     const { slug } = useParams();
     const allrides=useSelector(state=>state.rides.rides)
     useEffect(() => {
-        console.log("allrides",allrides)
         allrides.map((ride)=>{
             if(ride.Rideid==slug){
                 setPost(ride)

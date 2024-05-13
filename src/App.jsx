@@ -6,17 +6,26 @@ import { Footer, Navbar } from './components'
 import { Outlet } from 'react-router-dom'
 import Loading from './components/Loading'
 import { ToastContainer } from 'react-toastify'
+import { setrides } from './store/ridesSlice'
+import service from './appwrite/config'
+
+
 
 function App() {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   
   useEffect(() => {
-
+    
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
           dispatch(login({ userData }))
+          service.getPosts().then((rides) => {
+            if (rides) {
+            dispatch(setrides(rides.documents))
+            }
+          })
         } else {
           dispatch(logout())
         }
