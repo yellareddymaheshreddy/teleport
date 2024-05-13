@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="relative w-full bg-white">
-      {menu&&<div className='absolute right-[23px] top-[80px] bg-[#f6f6f6] rounded-xl p-8 w-[12rem] black-shadow font-bold'>
+      {menu&&<div className='absolute right-[23px] top-[80px] bg-[#f6f6f6] rounded-xl p-8 w-[12rem] black-shadow font-bold z-50'>
         <ul className="menu bg-base-200 w-fit rounded-box flex flex-col gap-4">
           <li>
             <NavLink className={({ isActive }) => `flex gap-2 items-center hover:text-fuchsia-600 ${isActive? "text-fuchsia-600" : ""}`} to={"/"} onClick={() => { setmenu(false) }}>
@@ -83,7 +83,7 @@ const Navbar = () => {
         <div className="hidden lg:block">
           <button
             type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mr-4"
           >
             Install
           </button>

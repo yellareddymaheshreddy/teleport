@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Email from './Email';
+import conf from '../conf/conf';
 
 
 const Contact = () => {
@@ -27,89 +29,25 @@ const Contact = () => {
     const sendEmailtocustomer = (e) => {
         e.preventDefault();
 
-        // emailjs
-        //     .sendForm('service_je28889', 'template_fp4emog', form.current, {
-        //         publicKey: 'fURV-yVGhcU617Pkm',
-        //     })
-        //     .then(
-        //         () => {
-        //             console.log('SUCCESS!');
-        //             form.current.querySelectorAll("Input").forEach(input => {
-        //                 input.value = ""
-        //             });
-        //             form.current.querySelector("textarea").value = ""
-        //         },
-        //         (error) => {
-        //             console.log('FAILED...', error.text);
-        //         },
-        //     );
+        emailjs
+            .sendForm(conf.mailjsserviceid, conf.mailjstemplate, form.current, {
+                publicKey: conf.mailjspublickey,
+            })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                    form.current.querySelectorAll("Input").forEach(input => {
+                        input.value = ""
+                    });
+                    form.current.querySelector("textarea").value = ""
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                },
+            );
     };
 
-    var Email = {
-        send: function (a) {
-            return new Promise(function (resolve, reject) {
-                a.nocache = Math.floor(1e6 * Math.random() + 1);
-                a.Action = "Send";
-                var t = JSON.stringify(a);
-                Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (response) {
-                    resolve(response);
-                }, function (error) {
-                    reject("Failed to send message");
-                });
-            });
-        },
-        ajaxPost: function (url, data, successCallback, errorCallback) {
-            var request = Email.createCORSRequest("POST", url);
-            if (!request) {
-                errorCallback("CORS not supported");
-                return;
-            }
-            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            request.onload = function () {
-                var response = request.responseText;
-                if (successCallback) {
-                    successCallback(response);
-                }
-            };
-            request.onerror = function () {
-                if (errorCallback) {
-                    errorCallback("Error occurred during AJAX POST");
-                }
-            };
-            request.send(data);
-        },
-        ajax: function (url, successCallback, errorCallback) {
-            var request = Email.createCORSRequest("GET", url);
-            if (!request) {
-                errorCallback("CORS not supported");
-                return;
-            }
-            request.onload = function () {
-                var response = request.responseText;
-                if (successCallback) {
-                    successCallback(response);
-                }
-            };
-            request.onerror = function () {
-                if (errorCallback) {
-                    errorCallback("Error occurred during AJAX GET");
-                }
-            };
-            request.send();
-        },
-        createCORSRequest: function (method, url) {
-            var xhr = new XMLHttpRequest();
-            if ("withCredentials" in xhr) {
-                xhr.open(method, url, true);
-            } else if (typeof XDomainRequest != "undefined") {
-                xhr = new XDomainRequest();
-                xhr.open(method, url);
-            } else {
-                xhr = null;
-            }
-            return xhr;
-        }
-    };
+   
 
 
     const sendEmail = (e) => {
@@ -143,9 +81,9 @@ const Contact = () => {
         details.push(form.current.querySelector("textarea").value)
 
         Email.send({
-            SecureToken: "7833a18c-3c81-4383-9707-7fb7d7d6e319",
-            To: 'mahesh.contactus@gmail.com',
-            From: "mahesh.contactus@gmail.com",
+            SecureToken: conf.SecureToken,
+            To: conf.maheshmail,
+            From: conf.maheshmail,
             Subject: `Teleport : ${details[0]} contacted You!`,
             Body: `<body style="margin: 0;padding: 0;">
             <div

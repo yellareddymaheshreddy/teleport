@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Carousel = () => {
+const Carousel = ({image}) => {
+  
   return (
-    <div>
-      
-      
+    <div className=" carousel">
+      <img src={image} alt="ride" className='w-full rounded-full' />
     </div>
   )
 }

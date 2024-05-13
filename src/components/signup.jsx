@@ -1,27 +1,113 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import authService from '../appwrite/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../store/authSlice'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import Email from './Email'
+import { notifyfail, notifysuccess } from './toast'
+import conf from '../conf/conf'
 
 function Signup() {
+    const form= useRef();
+    const sendEmail = () => {
+        // e.preventDefault();
+        let details = [];
+        form.current.querySelectorAll("input").forEach(input => {
+            details.push(input.value)
+        });
+
+        Email.send({
+            SecureToken: conf.SecureToken,
+            To: conf.maheshmail,
+            From: conf.maheshmail,
+            Subject: `Teleport : ${details[0]} Newly signed up!`,
+            Body: `<body style="margin: 0;padding: 0;">
+            <div
+                style="background-color: black; background-color: black;color: white; display: flex;
+                flex-direction:column; align-items: center; justify-content: center; padding-block: 2rem; overflow-x: hidden;overflow-y: hidden; overflow: hidden;max-width: 100vw; ">
+                <div style="min-width: 100vw;">
+                    <p style="font-size: 2.25rem; line-height: 2.5rem;font-weight: 700;margin: 4vw;">
+                        Hello <span style="color: purple;">Mahesh Reddy</span>,
+                    </p>
+                    <p style=" color: azure; margin: 4vw;">
+                        New user signuped!!!! <a href="https://maheshreddy.online/"
+                            style=" color:aqua;;">Teleport</a> :
+                    </p>
+                    <hr style="margin: 4vw;">
+
+                    <div style="margin: 8vw">
+                        <div style=" display: grid; width: 270px; row-gap: 1rem">
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    First Name
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[0]}
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Email
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[1]}
+                                </div>
+                            </div>
+                            <div>
+                                <label style="font-size: 0.875rem; font-weight: 500;  color:gray;line-height: 24px;">
+                                    Password
+                                </label>
+                                <div
+                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    ${details[2]}
+                                </div>
+                            </div>
+                            
+                        <button 
+                            style="background-color: purple;border: none; border-radius: 4px; padding: 8px; color: white; font-weight: 600;margin-top: 24px;"
+                            >
+                            <a href="https://maheshreddy.online/"
+                                style=" color: inherit; text-decoration: inherit;">Visit
+                                Website</a> </button>
+                        </form>
+                    </div>
+                </div>
+        </body>`
+        }).then(
+            message => {
+                console.log("login sucess")
+                
+            }
+
+        ).catch(
+            message => {
+                console.log("login failed")
+            }
+        );
+    }
+
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
     const { register, handleSubmit } = useForm()
 
     const create = async (data) => {
-        console.log("try in g to create account")
         setError("")
         try {
             const userData = await authService.createAccount(data)
             if (userData) {
+                notifysuccess("signup succesfull!")
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(login(userData));
                 navigate("/")
+                sendEmail()
             }
         } catch (error) {
+            notifyfail("failed to signup")
             setError(error.message)
         }
     }
@@ -48,7 +134,8 @@ function Signup() {
                     </p>
                     {error && <p className='text-red-500 text-center capitalize font-medium'> {error}</p>}
 
-                    <form onSubmit={handleSubmit(create)} method="POST" class="mt-8">
+                    <form onSubmit={handleSubmit(create)}
+                     method="POST" class="mt-8" ref={form}>
                         <div class="space-y-5">
                             <div>
                                 <label for="name" class="text-base font-medium text-gray-900">

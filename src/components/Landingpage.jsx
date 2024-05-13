@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Carousel from './Carousel';
+import { Link } from 'react-router-dom';
 
 const Landingpage = () => {
-    const navigate= useNavigate();
+    const down1=useRef();
+    const down2=useRef();
+    const down3=useRef();
+    const navigate = useNavigate();
+    const images = ["rideshare1.png", "rideshare2.png"];
     return (
         <div className="w-full">
-           
+
 
             <div className="relative w-full bg-white">
                 <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
@@ -23,14 +28,14 @@ const Landingpage = () => {
                         <p className="mt-8 text-lg text-gray-700">
                             Service to others is the rent you pay for your room here on earth.
                         </p>
-                        <div className="my-8 flex items-center justify-center gap-12 space-x-2">
+                        <div className="my-8 flex items-center justify-center gap-6 space-x-2">
                             <div className='flex gap-2'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" height="50px" width="50px" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5.5" cy="17.5" r="3.5"></circle> <circle cx="18.5" cy="17.5" r="3.5"></circle> <path d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path> </g></svg>
 
                                 <button
-                                onClick={()=>{
-                                    navigate("/add-post")
-                                }}
+                                    onClick={() => {
+                                        navigate("/add-post")
+                                    }}
                                     type="button"
                                     className="rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                 >
@@ -38,11 +43,11 @@ const Landingpage = () => {
                                 </button>
 
                             </div>
-                            
+
                             <div className='flex gap-2'>
                                 <svg fill="#161313" height="50px" width="50px" version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="79 -152 413.5 561" xmlSpace="preserve" stroke="#161313"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M230.4-103.3c0-25.5,20.7-46.2,46.2-46.2c25.5,0,46.2,20.7,46.2,46.2c0,25.5-20.7,46.2-46.2,46.2 C251.1-57.1,230.4-77.8,230.4-103.3z M467.8,169.1h-20.1v157.2h20.1c14.4,0,21.7-11.3,21.7-21.6c0,0,0-113.3,0-114 C489.4,180.5,481.3,169.1,467.8,169.1z M407.2,169h29.5v157.2H332v54.1c0,36.2-53.2,35.1-53.2,0V169.1h-8.8v211.1 c0,35.1-52.8,36.2-52.8,0V13.5L92.5-113.4c-21.5-21.5,9.9-52.9,31.4-31.3L221.4-45l102.5-0.1c32.1,0,56.2,29.8,56.2,58.1v122.2 c8.6,0,13.7,0,13.7,0c8.6,0,13.5,4.2,13.5,12.3V169z M341.4,27.4H332V169h9.4v-21.3v-0.2V27.4z M394.2,147.8h-40.3v21.3h40.3V147.8z "></path> </g></svg>
                                 <button
-                                    onClick={()=>{
+                                    onClick={() => {
                                         navigate("/all-posts");
                                     }}
                                     type="button"
@@ -53,10 +58,8 @@ const Landingpage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
-                    <div className="w-64 carousel rounded-box">
-                    carousel
-</div>
+                    <div className="hidden relative lg:col-span-5 lg:block lg:-mr-8 xl:col-span-6">
+                        <Carousel image={images[1]} />
                     </div>
                 </div>
             </div>
@@ -79,10 +82,9 @@ const Landingpage = () => {
                                 ></path>
                             </svg>
                         </div>
-                        <h3 className="mt-8 text-lg font-semibold text-black">Secured Payments</h3>
+                        <h3 className="mt-8 text-lg font-semibold text-black">Make Friends</h3>
                         <p className="mt-4 text-sm text-gray-600">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                            sint. Velit officia consequat duis enim velit mollit.
+                            You can make new friends using our website by sharing your ride with strangers and traveling with them.
                         </p>
                     </div>
                     <div>
@@ -103,11 +105,10 @@ const Landingpage = () => {
                             </svg>
                         </div>
                         <h3 className="mt-8 text-lg font-semibold text-black">
-                            Fast &amp; Easy to Load
+                            Help Others &amp; Stay Happy
                         </h3>
                         <p className="mt-4 text-sm text-gray-600">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                            sint. Velit officia consequat duis enim velit mollit.
+                            You can publish your ride in here and get the travel partners with you.
                         </p>
                     </div>
                     <div>
@@ -128,11 +129,10 @@ const Landingpage = () => {
                             </svg>
                         </div>
                         <h3 className="mt-8 text-lg font-semibold text-black">
-                            Light &amp; Dark Version
+                            Free &amp; Polution Friendly
                         </h3>
                         <p className="mt-4 text-sm text-gray-600">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                            sint. Velit officia consequat duis enim velit mollit.
+                            By using our website indirectly you are saving petrol and making being the part of making polution free environment
                         </p>
                     </div>
                     <div>
@@ -152,10 +152,9 @@ const Landingpage = () => {
                                 ></path>
                             </svg>
                         </div>
-                        <h3 className="mt-8 text-lg font-semibold text-black">Filter Blocks</h3>
+                        <h3 className="mt-8 text-lg font-semibold text-black">Explore the world </h3>
                         <p className="mt-4 text-sm text-gray-600">
-                            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                            sint. Velit officia consequat duis enim velit mollit.
+                            You can explore the real world with the real people who are completly strangers before.
                         </p>
                     </div>
                 </div>
@@ -167,20 +166,37 @@ const Landingpage = () => {
                             Frequently Asked Questions
                         </h2>
                         <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 lg:mx-auto">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere,
-                            assumenda
+                            If you dont find answer for your question , Feel free to contact us directly using contact us tab!
                         </p>
                     </div>
-                    <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16">
-                        <div className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-200">
+                    <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16 ">
+                        
+                    <div className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-1000">
+                            <span 
+                            onClick={(e)=>{
+                                console.log("object")
+                                const element=e.currentTarget.querySelector("#m")
+                                if(element.classList.contains("hidden")){
+                                    element.classList.remove("opacity-0","hidden")
+                                    
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="18 15 12 9 6 15"
+                                }else{
+                                    element.classList.add("opacity-0","hidden")
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="6 9 12 15 18 9"
+                                }
+                            }}
+                            >
+
                             <button
+                                
                                 type="button"
                                 className="flex w-full items-center justify-between px-4 py-5 sm:p-6"
-                            >
+                                >
                                 <span className="flex text-lg font-semibold text-black">
-                                    How do I get started?
+                                    What is the use of this website?
                                 </span>
                                 <svg
+                                    
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
                                     height="24"
@@ -191,27 +207,42 @@ const Landingpage = () => {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="h-5 w-5 text-gray-500"
-                                >
-                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                    >
+                                    <polyline points="6 9 12 15 18 9" id='polyline'></polyline>
                                 </svg>
                             </button>
-                            <div className="px-4 pb-5 sm:px-6 sm:pb-6">
-                                <p className="text-gray-500">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-                                    aliquam adipisci iusto aperiam? Sint asperiores sequi nobis
-                                    inventore ratione deleniti?
+                            <div className="px-4 pb-5 sm:px-6 sm:pb-6 ">
+                                <p className="text-gray-500 hidden" id='m'>
+                                    This website is designed to deliver rides from the riders who are willing to help others by allowing others to travel through them when the space in their vechicle is available
                                 </p>
                             </div>
-                        </div>
-                        <div className="cursor-pointer rounded-md border border-gray-400 transition-all duration-200">
-                            <button
-                                type="button"
-                                className="flex w-full items-start justify-between px-4 py-5 sm:p-6 md:items-center"
+                                    </span>
+                        </div><div className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-1000">
+                            <span 
+                            onClick={(e)=>{
+                                console.log("object")
+                                const element=e.currentTarget.querySelector("#m")
+                                if(element.classList.contains("hidden")){
+                                    element.classList.remove("opacity-0","hidden")
+                                    
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="18 15 12 9 6 15"
+                                }else{
+                                    element.classList.add("opacity-0","hidden")
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="6 9 12 15 18 9"
+                                }
+                            }}
                             >
-                                <span className="flex text-start text-lg font-semibold text-black">
-                                    What is the difference between a free and paid account?
+
+                            <button
+                                
+                                type="button"
+                                className="flex w-full items-center justify-between px-4 py-5 sm:p-6"
+                                >
+                                <span className="flex text-lg font-semibold text-black">
+                                    How to get free ride ?
                                 </span>
                                 <svg
+                                    
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
                                     height="24"
@@ -221,21 +252,43 @@ const Landingpage = () => {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="hidden h-5 w-5 text-gray-500 md:block"
-                                >
-                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                    className="h-5 w-5 text-gray-500"
+                                    >
+                                    <polyline points="6 9 12 15 18 9" id='polyline'></polyline>
                                 </svg>
                             </button>
-                        </div>
-                        <div className="cursor-pointer rounded-md border border-gray-400 transition-all duration-200">
-                            <button
-                                type="button"
-                                className="flex w-full items-start justify-between px-4 py-5 sm:p-6 md:items-center"
+                            <div ref={down1} className="px-4 pb-5 sm:px-6 sm:pb-6 ">
+                                <p className="text-gray-500 hidden" id='m'>
+                                    Go to home page and click on Get ride and select any one of the ride and contact the rider using his contact details
+                                </p>
+                            </div>
+                                    </span>
+                        </div><div className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-1000">
+                            <span 
+                            onClick={(e)=>{
+                                console.log("object")
+                                const element=e.currentTarget.querySelector("#m")
+                                if(element.classList.contains("hidden")){
+                                    element.classList.remove("opacity-0","hidden")
+                                    
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="18 15 12 9 6 15"
+                                }else{
+                                    element.classList.add("opacity-0","hidden")
+                                    e.currentTarget.querySelector("polyline").attributes.points.value="6 9 12 15 18 9"
+                                }
+                            }}
                             >
-                                <span className="flex text-start text-lg font-semibold text-black">
-                                    What is the difference between a free and paid account?
+
+                            <button
+                                
+                                type="button"
+                                className="flex w-full items-center justify-between px-4 py-5 sm:p-6"
+                                >
+                                <span className="flex text-lg font-semibold text-black">
+                                    How to share our ride ?
                                 </span>
                                 <svg
+                                    
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
                                     height="24"
@@ -245,425 +298,29 @@ const Landingpage = () => {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="hidden h-5 w-5 text-gray-500 md:block"
-                                >
-                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                    className="h-5 w-5 text-gray-500"
+                                    >
+                                    <polyline points="6 9 12 15 18 9" id='polyline'></polyline>
                                 </svg>
                             </button>
+                            <div className="px-4 pb-5 sm:px-6 sm:pb-6 ">
+                                <p className="text-gray-500 hidden" id='m'>
+                                    You can share your ride by going to Donate ride section in the home page and create ride
+                                </p>
+                            </div>
+                                    </span>
                         </div>
                     </div>
                     <p className="textbase mt-6 text-center text-gray-600">
                         Can&#x27;t find what you&#x27;re looking for?{" "}
-                        <a href="#" title="" className="font-semibold text-black hover:underline">
+                        <Link to="/contact" title="" className="font-semibold text-black hover:underline">
                             Contact our support
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </section>
-            <div className="mx-auto my-12 max-w-7xl md:my-24 lg:my-32">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-x-6">
-                    <div className="px-4 py-10 lg:col-span-5 lg:px-0">
-                        <span className="mb-8 inline-block rounded-full border p-1 px-3 text-xs font-semibold">
-                            Pricing that fits your budget
-                        </span>
-                        <h1 className="text-3xl font-bold md:text-5xl">
-                            Lorem ipsum dolor sit amet consectetur.
-                        </h1>
-                        <p className="mt-8 font-medium">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                            magni, rem sed sint neque doloribus saepe veniam minima quaerat minus.
-                        </p>
-                        <div className="mt-8 flex w-full max-w-sm items-center space-x-2">
-                            <input
-                                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                type="email"
-                                placeholder="Email"
-                            />
-                            <button
-                                type="button"
-                                className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                            >
-                                Subscribe
-                            </button>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center md:flex-row lg:col-span-7">
-                        <div className="w-full p-5 md:w-1/2">
-                            <div className="rounded-md border bg-white bg-opacity-90">
-                                <div className=" border-b">
-                                    <div className="px-9 py-7">
-                                        <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">
-                                            Standard
-                                        </h3>
-                                        <p className="font-medium leading-relaxed text-gray-500">
-                                            Lorem ipsum dolor sit amet, consect etur adipiscing maror.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="px-9 pb-9 pt-8">
-                                    <p className="mb-6 font-medium leading-relaxed text-gray-600">
-                                        Features included:
-                                    </p>
-                                    <ul className="mb-11">
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">3 Team Members</p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">1200+ UI Blocks</p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">
-                                                10 GB Cloud Storage
-                                            </p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">
-                                                Individual Email Account
-                                            </p>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">Premium Support</p>
-                                        </li>
-                                    </ul>
-                                    <p className="mb-6 text-lg font-semibold leading-normal text-gray-600">
-                                        <span>Starting from</span>
-                                        <span className="ml-2 text-gray-900">$49/mo</span>
-                                    </p>
-                                    <div className="md:inline-block">
-                                        <button
-                                            type="button"
-                                            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                                        >
-                                            Start your free trial
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full p-5 md:w-1/2">
-                            <div className="rounded-md border bg-white bg-opacity-90">
-                                <div className=" border-b">
-                                    <div className="px-9 py-7">
-                                        <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">
-                                            Standard
-                                        </h3>
-                                        <p className="font-medium leading-relaxed text-gray-500">
-                                            Lorem ipsum dolor sit amet, consect etur adipiscing maror.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="px-9 pb-9 pt-8">
-                                    <p className="mb-6 font-medium leading-relaxed text-gray-600">
-                                        Features included:
-                                    </p>
-                                    <ul className="mb-11">
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">3 Team Members</p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">1200+ UI Blocks</p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">
-                                                10 GB Cloud Storage
-                                            </p>
-                                        </li>
-                                        <li className="mb-4 flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">
-                                                Individual Email Account
-                                            </p>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                className="mr-2"
-                                            >
-                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                            </svg>
-                                            <p className="font-semibold leading-normal">Premium Support</p>
-                                        </li>
-                                    </ul>
-                                    <p className="mb-6 text-lg font-semibold leading-normal text-gray-600">
-                                        <span>Starting from</span>
-                                        <span className="ml-2 text-gray-900">$49/mo</span>
-                                    </p>
-                                    <div className="md:inline-block">
-                                        <button
-                                            type="button"
-                                            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                                        >
-                                            Start your free trial
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="mx-auto max-w-7xl bg-gray-50 px-2 py-10 lg:px-2">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                    <div className="w-full md:w-2/3 lg:w-1/2">
-                        <h2 className="text-3xl font-bold text-black">
-                            Sign up for our weekly newsletter
-                        </h2>
-                        <p className="mt-4 text-gray-600">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
-                            ipsum eu nunc commodo posuere et sit amet ligula.
-                        </p>
-                        <div className="mt-4">
-                            <p className="font-semibold text-gray-800">
-                                Trusted by over 100,000+ businesses and individuals
-                            </p>
-                            <div className="mt-2 flex items-center">
-                                <div className="flex space-x-1">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="h-5 w-5 text-yellow-400"
-                                    >
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                    </svg>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="h-5 w-5 text-yellow-400"
-                                    >
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                    </svg>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="h-5 w-5 text-yellow-400"
-                                    >
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                    </svg>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="h-5 w-5 text-yellow-400"
-                                    >
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                    </svg>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        className="h-5 w-5 text-yellow-400"
-                                    >
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                    </svg>
-                                </div>
-                                <span className="ml-2 inline-block">
-                                    <span className="text-sm font-semibold text-gray-800">
-                                        4.8/5 . 3420 Reviews
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-10 w-full md:w-2/3 lg:mt-0 lg:w-1/2">
-                        <form className="flex lg:justify-center">
-                            <div className="flex w-full max-w-md flex-col space-y-4">
-                                <input
-                                    className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                    type="email"
-                                    placeholder="Email"
-                                />
-                                <button
-                                    type="button"
-                                    className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                                >
-                                    Subscribe
-                                </button>
-                            </div>
-                        </form>
-                        <p className="mt-2 lg:text-center">
-                            <span className="text-sm text-gray-600">
-                                By signing up, you agree to our terms of service and privacy policy.
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
 
     )
