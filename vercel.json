@@ -1,0 +1,8 @@
+{
+  "routes": [
+   // { "src": "/", "dest": "/" },
+    { "src": "/add-post", "dest": "/" }
+   // { "src": "/tos", "dest": "/" }
+    // ....
+  ]
+}
