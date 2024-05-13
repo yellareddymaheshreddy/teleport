@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { notifysuccess } from "./toast";
+import { deleteride } from "../store/ridesSlice";
 
 export default function Post() {
-    const [post, setPost] = useState(null);
-    const { slug } = useParams();
     const navigate = useNavigate();
+    const { slug } = useParams();
+    const allrides=useSelector(state=>state.rides.rides)
+    useEffect(() => {
+        console.log("allrides",allrides)
+        allrides.map((ride)=>{
+            if(ride.Rideid==slug){
+                setPost(ride)
+            }
+        })
+    }, [slug,navigate])
 
+    const [post, setPost] = useState(null);
     const userData = useSelector((state) => state.auth.userData);
-
     const isAuthor = post && userData ? post.Createdby === userData.$id : false;
 
-    useEffect(() => {
-        if (slug) {
-            appwriteService.getPost(slug).then((post) => {
-                if (post) {
-                    setPost(post);
-                }
-                else navigate("/");
-            });
-        } else navigate("/");
-    }, [slug, navigate]);
 
-    const deletePost = () => {
-        appwriteService.deletePost(post.$id).then(() => {
-            notifysuccess("deletion successfull!")
-            navigate("/");
+    const dispatch=useDispatch();
 
-        });
-    };
+    
+
+
+    const deletePost=()=>{
+        notifysuccess("deletion sucessfull!")
+        dispatch(deleteride(post.$id))
+        appwriteService.deletePost(post.$id)
+        navigate("/")
+
+    }
+
 
     return post ? (
         <div class="mx-3 md:mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-4 sm:p-10 sm:px-16 shadow-lg rounded-lg border">
@@ -128,7 +133,8 @@ export default function Post() {
                 <div class="flex justify-end space-x-4">
                     <button
                         onClick={() => {
-                            navigate(`/edit-post/${post.$id}`)
+                            // navigate(`/edit-post/${post.$id}`)
+                            navigate(`/edit-post/${post.Rideid}`)
                         }}
                         type="button"
                         class="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-green-50"
@@ -136,9 +142,7 @@ export default function Post() {
                         Edit
                     </button>
                     <button
-                        onClick={() => {
-                            deletePost()
-                        }}
+                        onClick={deletePost}
                         type="button"
                         class="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-red-50"
                     >

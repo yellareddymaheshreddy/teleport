@@ -1,12 +1,23 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Carousel from './Carousel';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import service from '../appwrite/config';
+import { setrides } from '../store/ridesSlice';
+
 
 const Landingpage = () => {
-    const down1=useRef();
-    const down2=useRef();
-    const down3=useRef();
+    const dispatch =useDispatch();
+    React.useEffect(() => {
+        service.getPosts().then((rides) => {
+            if (rides) {
+            dispatch(setrides(rides.documents))
+            }
+          })
+    }, [])
+    
+  
     const navigate = useNavigate();
     const images = ["rideshare1.png", "rideshare2.png"];
     return (
@@ -257,7 +268,7 @@ const Landingpage = () => {
                                     <polyline points="6 9 12 15 18 9" id='polyline'></polyline>
                                 </svg>
                             </button>
-                            <div ref={down1} className="px-4 pb-5 sm:px-6 sm:pb-6 ">
+                            <div className="px-4 pb-5 sm:px-6 sm:pb-6 ">
                                 <p className="text-gray-500 hidden" id='m'>
                                     Go to home page and click on Get ride and select any one of the ride and contact the rider using his contact details
                                 </p>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import service from '../appwrite/config'
 import RideCard from './RideCard'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -7,23 +6,12 @@ import { notifysuccess } from './toast'
 import { useSelector } from 'react-redux'
 import Loading from './Loading'
 const Allrides = () => {
-  const [rides, setrides] = useState([])
   const navigate=useNavigate();
-  const currentUser =useSelector(state=>state.auth.userData.$id);
-  const currentDate=new Date().getFullYear()+"-0"+(new Date().getMonth()+1)+"-"+new Date().getDate();
-  // console.log(rides[0].Createdby)
-  const [loader, setloader] = useState(true)
-  useEffect(() => {
-    
-    service.getPosts().then((posts) => {
-      if (posts) {
-        setrides(posts.documents)
-      }
-    })
-    setloader(false)
-  }, [])
 
-  if(loader)<Loading/>
+  const currentUser =useSelector(state=>state.auth.userData.$id);
+  let rides=useSelector(state=>state.rides.rides)
+  const currentDate=new Date().getFullYear()+"-0"+(new Date().getMonth()+1)+"-"+new Date().getDate();
+
   if (!rides) {
     return (
       <section className='min-h-[40vh] flex justify-center items-center'>
@@ -120,7 +108,6 @@ const Allrides = () => {
                     <tbody class="divide-y divide-gray-200 bg-white ">
                       {rides.map((ride) => {
                           if(ride.DateofRide >= currentDate||ride.Createdby== currentUser){
-                            ride.status=ride.DateofRide >= currentDate;
                             return(
                               <tr key={ride.$id} className='w-full'>
                               <RideCard {...ride} />

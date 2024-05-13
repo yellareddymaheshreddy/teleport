@@ -1,20 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [{ From:"goa", To:"kochi", Vechicle:"car", NumberofPassengers:2, DateofRide:"safda", Createdby:"krishana", Message:"ntg",Rideid: "ksfd"}]
+const initialState = {rides:[]}
 
 const ridesSlice = createSlice({
     name: "rides",
     initialState,
     reducers: {
         setrides: (state, action) => {
-            state.push(action.payload)
-            console.log(action.payload)
+            state.rides=action.payload
         },
-        update: (state) => {
-            state.status = false;
-        },
-        delete:(state,action)=>{
 
+        updateride: (state,action) => {
+            const data=action.payload.data;
+            state.rides=state.rides.map((ride)=>{if(ride.$id!==action.payload.id){
+                return ride
+            }
+        return data})
+        },
+       
+        deleteride:(state,action)=>{            
+            state.rides=state.rides.filter((ride)=>ride.$id != action.payload
+        )
+        },
+        addride:(state,action)=>{
+            state=state.rides.push(action.payload)
         }
      }
 })
@@ -22,6 +31,6 @@ const ridesSlice = createSlice({
 
 
 
-export const {login, logout} = ridesSlice.actions;
+export const {setrides,updateride,deleteride,addride} = ridesSlice.actions;
 
 export default ridesSlice.reducer;

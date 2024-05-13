@@ -2,22 +2,15 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import appwriteservice from '../appwrite/config'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ID } from 'appwrite'
 import { notifysuccess } from './toast'
+import { addride, updateride } from '../store/ridesSlice'
 
 const PostForm = ({ ride }) => {
     const date = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
     const listofvechicles = ["Car", "Auto",  "Bus", "Lorry", "Ship", "Airplane", "Helicopter", "Scooter", "Tuk-tuk"];
-
-    console.log(date)
-    React.useEffect(() => {
-        //   notifysuccess("working postform",ride)
-        console.log(ride)
-
-
-    }, [])
-
+    const dispatch =useDispatch();
     const { register, handleSubmit } = useForm({
         defaultValues: {
             From: ride?.From || '',
@@ -34,25 +27,27 @@ const PostForm = ({ ride }) => {
 
     const submit = async (data) => {
         if (ride) {
+
+            dispatch(updateride({id:ride.$id,data}))
             const dbride = await appwriteservice.updatePost(ride.$id, { ...data })
             if (dbride) {
-                navigate(`/post/${dbride.$id}`)
+                navigate(`/post/${ride.$id}`)
             }
             notifysuccess("Ride Updated Successfully!")
 
         }
         else {
-            console.log(data)
+            const uniqueid=ID.unique();
+            // ride.id=uniqueid
+            dispatch(addride({...data,NumberofPassengers: Number(data.NumberofPassengers),Createdby: userData.$id,Rideid:uniqueid}))
+            notifysuccess("Ride Created Successfully!")
+            navigate(`/post/${uniqueid}`)
             const dbride = await appwriteservice.createPost({
                 ...data,
                 NumberofPassengers: Number(data.NumberofPassengers),
                 Createdby: userData.$id,
-                Rideid: ID.unique()
+                Rideid: uniqueid
             })
-            if (dbride) {
-                navigate(`/post/${dbride.$id}`)
-                notifysuccess("Ride Created Successfully!")
-            }
         }
 
     }
