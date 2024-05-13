@@ -5,6 +5,7 @@ export class Service {
     client = new Client();
     databases;
     bucket;
+    users;
 
     constructor() {
         this.client

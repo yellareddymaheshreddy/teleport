@@ -2,17 +2,29 @@ import React, { useState, useEffect } from 'react'
 import service from '../appwrite/config'
 import RideCard from './RideCard'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { notifysuccess } from './toast'
+import { useSelector } from 'react-redux'
+import Loading from './Loading'
 const Allrides = () => {
   const [rides, setrides] = useState([])
   const navigate=useNavigate();
+  const currentUser =useSelector(state=>state.auth.userData.$id);
+  const currentDate=new Date().getFullYear()+"-0"+(new Date().getMonth()+1)+"-"+new Date().getDate();
+  // console.log(rides[0].Createdby)
+  const [loader, setloader] = useState(true)
   useEffect(() => {
+    
     service.getPosts().then((posts) => {
       if (posts) {
         setrides(posts.documents)
       }
     })
+    setloader(false)
   }, [])
-  if (rides.length == 0) {
+
+  if(loader)<Loading/>
+  if (!rides) {
     return (
       <section className='min-h-[40vh] flex justify-center items-center'>
         <div class="mx-4 my-8 p-2 md:px-4 md:py-8 text-center bg-slate-100 md:m-10 rounded-md ">
@@ -43,87 +55,95 @@ const Allrides = () => {
 
     )
   }
+    return (
 
-  return (
 
-
-    <section class="mx-auto  max-w-7xl px-4 py-4">
-      <div class="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
-        <div>
-          <h2 class="text-lg font-semibold">All Rides</h2>
-          <p class="mt-1 text-sm text-gray-700">
-            This is a list of all Rides. You can add new Rides, edit or
-            delete existing ones (owner only).
-          </p>
+      <section class="mx-auto  max-w-7xl px-4 py-4 ">
+        <div class="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
+          <div>
+            <h2 class="text-lg font-semibold">All Rides</h2>
+            <p class="mt-1 text-sm text-gray-700">
+              This is a list of all Rides. You can add new Rides, edit or
+              delete existing ones (owner only).
+            </p>
+          </div>
+          <div>
+            <button
+              type="button"
+              onClick={()=>{
+                navigate('/add-post')
+              }}
+              class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              Create Ride
+            </button>
+          </div>
         </div>
-        <div>
-          <button
-            type="button"
-            onClick={()=>{
-              navigate('/add-post')
-            }}
-            class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            Create Ride
-          </button>
-        </div>
-      </div>
-      <div class="mt-6 flex flex-col">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
-            <div class="overflow-hidden border border-gray-200 md:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-200">
-                  <thead class="bg-gray-50">
-                    <tr>
-                      <th
-                        scope="col"
-                        class="px-4 py-3.5 text-left font-medium text-gray-700"
-                      >
-                        <span>Ride Details</span>
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-16 py-3.5 text-left text-sm font-normal text-gray-700 border-x"
-                      >
-                        Message
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-3.5  text-sm font-normal text-gray-700"
-                      >
-                        Vechicle
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-4 py-3.5 text-sm font-normal text-gray-700 border-x"
-                      >
-                        Date
-                      </th>
-                      <th scope="col" class="relative px-4 py-3.5 text-gray-500 text-sm">
-                        <span >No.of Passengers</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-gray-200 bg-white">
-                    {rides.map((ride) => (
-
-                      <tr key={ride.$id} className='w-full'>
-                        <RideCard {...ride} />
+        <div class="mt-6 flex flex-col">
+          <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block py-2 align-middle md:px-6 lg:px-8">
+              <div class="overflow-hidden border border-gray-200 md:rounded-lg">
+              <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          class="px-4 py-3.5 text-left font-medium text-gray-700"
+                        >
+                          <span>Ride Details</span>
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-4 py-3.5 text-sm font-normal text-gray-700 border-x"
+                        >
+                          Date
+                        </th>
+                        
+                        <th
+                          scope="col"
+                          class="px-4 py-3.5  text-sm font-normal text-gray-700"
+                        >
+                          Vechicle
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-16 py-3.5 text-left text-sm font-normal text-gray-700 border-x"
+                        >
+                          Message
+                        </th>
+                        <th scope="col" class="relative px-4 py-3.5 text-gray-500 text-sm">
+                          <span >No.of Passengers</span>
+                        </th>
                       </tr>
-                    ))}
-
-                  </tbody>
-                </table>
+                    </thead>
+                    
+                    <tbody class="divide-y divide-gray-200 bg-white ">
+                      {rides.map((ride) => {
+                          if(ride.DateofRide >= currentDate||ride.Createdby== currentUser){
+                            ride.status=ride.DateofRide >= currentDate;
+                            return(
+                              <tr key={ride.$id} className='w-full'>
+                              <RideCard {...ride} />
+                            </tr>
+                            )
+                          }
+                      }
+                      )}
+  
+                    </tbody>
+                  </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-
-    </section>
-
-
-  )
+        
+  
+      </section>
+  
+  
+    )
+  
+  
 }
 
 export default Allrides

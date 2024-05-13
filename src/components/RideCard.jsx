@@ -2,7 +2,7 @@ import React from 'react'
 import service from '../appwrite/config'
 import { Link, useNavigate } from 'react-router-dom'
 
-const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, DateofRide }) => {
+const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, DateofRide ,status}) => {
   const navigate = useNavigate();
   return (
 
@@ -14,7 +14,7 @@ const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, Dateof
           navigate(`/post/${$id}`)
         }}>
           <div class="h-15 w-15 flex-shrink-0 rounded-full shadow-lg border p-2">
-            
+
             <svg viewBox="0 0 24 24" fill="none" height="35px" width="35px" stroke="#444444" strokeWidth="2"
               strokeLinecap="round" strokeLinejoin="round"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5.5" cy="17.5" r="3.5"></circle> <circle cx="18.5" cy="17.5" r="3.5"></circle> <path d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path> </g></svg>
           </div>
@@ -26,17 +26,21 @@ const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, Dateof
           </div>
         </div>
       </td>
-      <td class="whitespace-nowrap px-4 py-4 border-x">
-        <div class="text-sm text-gray-900 font-medium text-wrap">{Message}</div>
-        {/* <div class="text-sm text-gray-700">Engineering</div> */}
+      <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-700 border-x">
+        {DateofRide}
+        { status? (<div class="flex justify-center items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">Active</div>):(<div class="flex justify-center items-center rounded-full bg-red-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">Expired</div>) }
+        {/* <div class="flex justify-center items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">Active</div> */}
+
       </td>
+      
       <td class="whitespace-nowrap px-4 py-4 ">
         <span class="flex justify-center items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">
           {Vechicle}
         </span>
       </td>
-      <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-700 border-x">
-        {DateofRide}
+      <td class="whitespace-nowrap px-4 py-4 border-x">
+        <div class="text-sm text-gray-900 font-medium text-wrap">{Message}</div>
+        {/* <div class="text-sm text-gray-700">Engineering</div> */}
       </td>
       <td class="whitespace-nowrap px-4 py-4 text-center text-sm font-medium ">
         <a href="#" class="text-gray-700">

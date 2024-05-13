@@ -7,6 +7,10 @@ import { ID } from 'appwrite'
 import { notifysuccess } from './toast'
 
 const PostForm = ({ ride }) => {
+    const date = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
+    const listofvechicles = ["Car", "Auto",  "Bus", "Lorry", "Ship", "Airplane", "Helicopter", "Scooter", "Tuk-tuk"];
+
+    console.log(date)
     React.useEffect(() => {
         //   notifysuccess("working postform",ride)
         console.log(ride)
@@ -80,7 +84,7 @@ const PostForm = ({ ride }) => {
                                                     <input
                                                         class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                         type="text"
-                                                        placeholder="Enter your name"
+                                                        placeholder="Hyderabad...."
                                                         id="name"
                                                         {...register("From", { required: true })}
                                                     />
@@ -95,9 +99,10 @@ const PostForm = ({ ride }) => {
                                                     <input
                                                         class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                         type="text"
-                                                        placeholder="Enter your name"
+                                                        placeholder="Banglore....."
                                                         id="name"
                                                         {...register("To", { required: true })}
+                                                       
                                                     />
                                                 </div>
                                             </div>
@@ -117,12 +122,17 @@ const PostForm = ({ ride }) => {
                                                         </label>
                                                         <div class="mt-1">
                                                             <input
+                                                                
+                                                                min={date}
                                                                 type="date"
                                                                 name="expiration-date"
+                                                                placeholder='12-05-2024'
                                                                 id="expiration-date"
                                                                 autoComplete="cc-exp"
                                                                 class="block h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                                 {...register("DateofRide", { required: true })}
+                                                            // min={new Date().getDate()+ "-" +  parseInt(new Date().getMonth() + 1 ) + "-" + new Date().getFullYear()}
+
                                                             />
                                                         </div>
                                                     </div>
@@ -135,7 +145,9 @@ const PostForm = ({ ride }) => {
                                                         </label>
                                                         <div class="mt-1">
                                                             <input
-                                                                type="text"
+                                                                min={1}
+                                                                placeholder='1'
+                                                                type="number"
                                                                 name="cvc"
                                                                 id="cvc"
                                                                 autoComplete="csc"
@@ -165,10 +177,12 @@ const PostForm = ({ ride }) => {
                                                                 id="address"
                                                                 name="address"
                                                                 autoComplete="street-address"
+                                                                placeholder='Its a free ride ....'
                                                                 class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                                 {...register("Message", { required: true })}
 
                                                             />
+
                                                         </div>
                                                     </div>
                                                     <div className='w-max'>
@@ -179,14 +193,22 @@ const PostForm = ({ ride }) => {
                                                             Vechicle Type:
                                                         </label>
                                                         <div class="mt-1">
-                                                            <input
+                                                            <select name="vechicle" id="vechicle" class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                                {...register("Vechicle", { required: true })}
+                                                                placeholder="Car"
+                                                            >   
+                                                            <option value="Bike" selected>Bike</option>
+                                                                {listofvechicles.map((Vechicle) => <option value={Vechicle}>{Vechicle}</option>
+                                                                )}
+                                                            </select>
+                                                            {/* <input
                                                                 type="text"
                                                                 name="cvc"
                                                                 id="cvc"
                                                                 autoComplete="csc"
                                                                 class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                                 {...register("Vechicle", { required: true })}
-                                                            />
+                                                            /> */}
                                                         </div>
                                                     </div>
 
@@ -226,7 +248,7 @@ const PostForm = ({ ride }) => {
                                         If you encounter any Issue please contact us , using contact us section and share your feedback to us . We are continuesly improving our website to serve to users for free
                                     </p>
                                 </div>
-                                
+
                                 <div class="mt-8 flex items-center justify-center px-8 sm:px-0">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

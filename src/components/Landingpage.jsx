@@ -1,10 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Carousel from './Carousel';
 
 const Landingpage = () => {
     const navigate= useNavigate();
     return (
         <div className="w-full">
+           
 
             <div className="relative w-full bg-white">
                 <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
