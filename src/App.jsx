@@ -11,7 +11,11 @@ import service from './appwrite/config'
 
 
 function App() {
-  
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+      deferredPrompt = e;
+      console.log("catched event",e)
+  });
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   
@@ -39,7 +43,7 @@ function App() {
       <ToastContainer />
       <div className='w-full block'>
 
-        <Navbar />
+        <Navbar deferredPrompt={deferredPrompt}/>
         <main>
           <Outlet />
         </main>

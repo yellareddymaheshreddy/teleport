@@ -5,14 +5,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import '../index.css'
 
-const Navbar = () => {
-  let deferredPrompt;
-  window.addEventListener('beforeinstallprompt', (e) => {
-      deferredPrompt = e;
-      console.log("catched event",e)
-  });
-
-
+const Navbar = ({deferredPrompt}) => {
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate();
   const [menu, setmenu] = React.useState(false)
