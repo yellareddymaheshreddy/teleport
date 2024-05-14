@@ -12,7 +12,7 @@ const ridesSlice = createSlice({
 
         updateride: (state,action) => {
             const data=action.payload.data;
-            state.rides=state.rides.map((ride)=>{if(ride.$id!==action.payload.id){
+            state.rides=state.rides.map((ride)=>{if(ride.Rideid!==action.payload.id){
                 return ride
             }
         return data})

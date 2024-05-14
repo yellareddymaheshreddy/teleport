@@ -1,8 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import PostForm from './PostForm'
-import service from '../appwrite/config'
 import { useNavigate, useParams } from 'react-router-dom'
-import { notifyfail,notifysuccess } from './toast'
 import { useSelector } from 'react-redux'
 
 const EditRide = () => {

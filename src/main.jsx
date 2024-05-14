@@ -4,27 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Landingpage from './components/Landingpage.jsx'
+import {Navbar,Footer,Contact,LandingPage,About,AuthLayout,Login,Signup,Post,Allrides,EditRide,CreateRide} from './components'
+
 import ErrorPage from "./error-page";
-import Navbar from './components/Navbar.jsx'
-import Footer from './components/Footer.jsx'
-import About from './components/About.jsx'
-import Contact from './components/Contact.jsx'
 import store from './store/store.js'
-import AuthLayout from './components/AuthLayout.jsx'
-import Login from './components/Login.jsx'
-import Signup from './components/signup.jsx'
-import Home from './components/Home.jsx'
-import Post from './components/Post.jsx'
-import Allrides from './components/Allrides.jsx'
-import EditRide from './components/EditRide.jsx'
-import CreateRide from './components/CreateRide.jsx'
+
 const router = createBrowserRouter([{
   path: "/",
   element: 
-  // <AuthLayout authentication={false}>
     <App />,
-    // </AuthLayout>,
   errorElement: <><Navbar />
     <ErrorPage />
     <Footer />
@@ -33,7 +21,7 @@ const router = createBrowserRouter([{
   children: [
     {
       path: "",
-      element: <AuthLayout authentication><Landingpage />
+      element: <AuthLayout authentication><LandingPage />
       </AuthLayout>,
     },
     {

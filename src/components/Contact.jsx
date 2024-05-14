@@ -106,7 +106,7 @@ const Contact = () => {
                                     First Name
                                 </label>
                                 <div
-                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    style=" borderRadius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
                                     ${details[0]}
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ const Contact = () => {
                                     Last Name
                                 </label>
                                 <div
-                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    style=" borderRadius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
                                     ${details[1]}
                                 </div>
                             </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                                     Email
                                 </label>
                                 <div
-                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    style=" borderRadius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
                                     ${details[2]}
                                 </div>
                             </div>
@@ -133,7 +133,7 @@ const Contact = () => {
                                     Phone
                                 </label>
                                 <div
-                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
+                                    style=" borderRadius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem">
                                     ${details[3]}
                                 </div>
                             </div>
@@ -142,12 +142,12 @@ const Contact = () => {
                                     Message
                                 </label>
                                 <div
-                                    style=" border-radius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem;min-height: 66px;">
+                                    style=" borderRadius: 0.375rem; border: 1px solid aliceblue;  padding: 0.5rem 0.75rem; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 0.875rem; line-height: 1.25rem;min-height: 66px;">
                                     ${details[4]}
                                 </div>
                             </div>
                         <button 
-                            style="background-color: purple;border: none; border-radius: 4px; padding: 8px; color: white; font-weight: 600;margin-top: 24px;"
+                            style="background-color: purple;border: none; borderRadius: 4px; padding: 8px; color: white; font-weight: 600;margin-top: 24px;"
                             >
                             <a href="https://maheshreddy.online/"
                                 style=" color: inherit; text-decoration: inherit;">Visit
@@ -312,13 +312,13 @@ const Contact = () => {
 
                                         </button> */}
                                         <div className='w-full flex justify-center items-center '>
-                                            <button ref={btn} style={{  height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "border-radius": "40px", "text-align": "center", "box-shadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 mt-8'>
+                                            <button ref={btn} style={{  height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "borderRadius": "40px", "text-align": "center", "boxShadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 mt-8'>
                                                 <p>Send Message</p>
                                                 <div style={{
                                                     width: "60px",
                                                     height: "60px",
-                                                    "border-radius": "40px",
-                                                    "box-shadow": "0 0 12px -2px rgba(0,0,0,0.5)",
+                                                    "borderRadius": "40px",
+                                                    "boxShadow": "0 0 12px -2px rgba(0,0,0,0.5)",
                                                     position: "absolute",
                                                     top: "0",
                                                     transition: "1s",
@@ -328,11 +328,11 @@ const Contact = () => {
                                                         margin: "10px"
                                                     }}>
                                                         <path className='delay-1000 transition-all' fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" style={{
-                                                            "stroke-width": 3,
+                                                            "strokeWidth": 3,
                                                             stroke: " #fff",
-                                                            "stroke-dasharray": 34,
-                                                            "stroke-dashoffset": 34,
-                                                            "stroke-linecap": "round",
+                                                            "strokeDasharray": 34,
+                                                            "strokeDashoffset": 34,
+                                                            "strokeLinecap": "round",
                                                         }} />
                                                     </svg>
                                                 </div>
