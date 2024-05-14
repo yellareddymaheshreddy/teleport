@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import '../index.css'
 
 const Navbar = ({deferredPrompt}) => {
-  console.log("object",deferredPrompt.prompt)
+  console.log("object",deferredPrompt)
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate();
   const [menu, setmenu] = React.useState(false)
