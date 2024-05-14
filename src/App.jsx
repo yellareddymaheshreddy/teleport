@@ -42,7 +42,7 @@ function App() {
       <ToastContainer />
       <div className='w-full block'>
 
-        <Navbar deferredPrompt={deferredPrompt}/>
+        <Navbar/>
         <main>
           <Outlet />
         </main>
