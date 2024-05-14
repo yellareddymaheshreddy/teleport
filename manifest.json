@@ -4,7 +4,7 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "icons/apple-icon-144.png",
+      "src": "/apple-icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
