@@ -5,11 +5,9 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import '../index.css'
 
-const Navbar = () => {
+const Navbar = ({install}) => {
   
   const authStatus = useSelector((state) => state.auth.status)
-  const deferredPrompt=useSelector((state)=>state.auth.deferredPrompt)
-  console.log("accessed data form store")
   const navigate = useNavigate();
   const [menu, setmenu] = React.useState(false)
 
@@ -46,16 +44,7 @@ const Navbar = () => {
             </li>
             <li className='text-center'>
               <button
-              onClick={async()=>{
-                if (deferredPrompt !== null) {
-                  deferredPrompt.prompt();
-                  const { outcome } = await deferredPrompt.userChoice;
-                  console.log("user choice",outcome)
-                  if (outcome === 'accepted') {
-                      deferredPrompt = null;
-                  }
-              }
-              }}
+              onClick={install}
                 type="button"
                 className={` bg-green-400 px-3 py-2 text-sm hover:bg-green-600  rounded-full w-full border border-green-600`}
               >
@@ -111,15 +100,7 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:block">
           <button
-           onClick={async()=>{
-            if (deferredPrompt !== null) {
-              deferredPrompt.prompt();
-              const { outcome } = await deferredPrompt.userChoice;
-              if (outcome === 'accepted') {
-                  deferredPrompt = null;
-              }
-          }
-          }}
+           onClick={install}
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black mr-4"
           >

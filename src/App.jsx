@@ -13,17 +13,19 @@ import service from './appwrite/config'
 function App() {
   
   const [loading, setLoading] = useState(true)
+  const [prompt, setprompt] = useState(null)
   const dispatch = useDispatch()
   
   useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+        setprompt(e);
+    });
+
     
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
           dispatch(login({ userData }))
-          window.addEventListener('beforeinstallprompt', (e) => {
-            dispatch(setdeffer(e))
-        });
           service.getPosts().then((rides) => {
             if (rides) {
             dispatch(setrides(rides.documents))
@@ -35,6 +37,15 @@ function App() {
       })
       .finally(() => setLoading(false))
   }, [])
+  const install= async () => {
+    if (prompt !== null) {
+        prompt.prompt();
+        const { outcome } = await prompt.userChoice;
+        if (outcome === 'accepted') {
+            setprompt(null)
+        }
+    }
+}
 
   return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between' >
@@ -42,7 +53,7 @@ function App() {
       <ToastContainer />
       <div className='w-full block'>
 
-        <Navbar/>
+        <Navbar install={install}/>
         <main>
           <Outlet />
         </main>

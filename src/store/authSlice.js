@@ -18,10 +18,6 @@ const authSlice = createSlice({
             state.status = false;
             state.userData = null;
         },
-        setdeffer:(state,action)=>{
-            state.deferredPrompt=action.payload;
-            console.log("deffer prompt set in store")
-        }
      }
 })
 
