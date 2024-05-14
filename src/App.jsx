@@ -11,10 +11,9 @@ import service from './appwrite/config'
 
 
 function App() {
-  let deferredPrompt;
+  const [deferredPrompt, setdefferedPrompt] = useState({})
   window.addEventListener('beforeinstallprompt', (e) => {
-      deferredPrompt = e;
-      console.log("catched event",e)
+      setdefferedPrompt = e;
   });
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
