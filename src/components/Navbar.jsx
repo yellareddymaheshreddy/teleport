@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import '../index.css'
 
 const Navbar = ({deferredPrompt}) => {
+  console.log("object",deferredPrompt.prompt)
   const authStatus = useSelector((state) => state.auth.status)
   const navigate = useNavigate();
   const [menu, setmenu] = React.useState(false)
@@ -110,6 +111,7 @@ const Navbar = ({deferredPrompt}) => {
           <button
            onClick={async()=>{
             if (deferredPrompt !== null) {
+              console.log(deferredPrompt,"in navbar")
               deferredPrompt.prompt();
               const { outcome } = await deferredPrompt.userChoice;
               if (outcome === 'accepted') {
