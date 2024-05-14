@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, DateofRide, status,Rideid }) => {
+const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, DateofRide, status, Rideid }) => {
   const currentDate = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
   status = DateofRide >= currentDate;
   const navigate = useNavigate();
@@ -9,11 +9,11 @@ const RideCard = ({ $id, From, To, Message, Vechicle, NumberofPassengers, Dateof
 
     <>
 
-      <td className="whitespace-nowrap px-4 py-4">
+      <td className="whitespace-nowrap px-4 py-4 ">
         <div className="flex items-center" onClick={() => {
           navigate(`/post/${Rideid}`)
         }}>
-          <div className="h-15 w-15 flex-shrink-0 rounded-full shadow-lg border p-2">
+          <div className="h-15 w-15 flex-shrink-0 rounded-full shadow-lg border p-2 min-w-max">
             <img src="./bike.svg" alt="" />
             {/* <svg viewBox="0 0 24 24" fill="none" height="35px" width="35px" stroke="#444444" strokeWidth="2"
               strokeLinecap="round" strokeLinejoin="round"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5.5" cy="17.5" r="3.5"></circle> <circle cx="18.5" cy="17.5" r="3.5"></circle> <path d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path> </g></svg> */}

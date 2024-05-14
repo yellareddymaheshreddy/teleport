@@ -14,14 +14,14 @@ export default function Post() {
     const [post, setPost] = useState({});
     let isAuthor = post && userData ? post.Createdby === userData.$id : false;
     useEffect(() => {
-        
+
         allrides.map((ride) => {
             if (ride.Rideid == slug) {
                 setPost(ride);
             }
         })
 
-    }, [slug, navigate, allrides,isAuthor])
+    }, [slug, navigate, allrides, isAuthor])
 
     const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ export default function Post() {
             <h2 className="text-3xl font-bold">Ride Details:</h2>
             <div className="space-y-1 flex">
                 <h3 className="text-lg font-semibold leading-snug sm:pr-8">
-                    Message:&nbsp;
+                   Rider Message:&nbsp;
                 </h3>
                 <p className="mt-3 text-sm font-medium text-gray-700">{post.Message}</p>
             </div>
@@ -54,19 +54,19 @@ export default function Post() {
                         <div className="flex w-full flex-col justify-between pb-4">
                             <div className="flex w-full justify-between space-x-2 pb-2">
                                 <div className="space-y-1 flex">
-                                    <h3 className="text-lg font-semibold leading-snug sm:pr-8">
+                                    <h3 className="text-lg font-semibold leading-snug sm:pr-8 text-gray-600">
                                         From:&nbsp;
                                     </h3>
-                                    <p className="text-sm">{post.From}</p>
+                                    <p className="text-sm font-medium">{post.From}</p>
                                 </div>
 
                             </div>
                             <div className="flex w-full justify-between space-x-2 pb-2">
                                 <div className="space-y-1 flex">
-                                    <h3 className="text-lg font-semibold leading-snug sm:pr-8">
+                                    <h3 className="text-lg font-semibold leading-snug sm:pr-8 text-gray-600">
                                         To:&nbsp;
                                     </h3>
-                                    <p className="text-sm">{post.To}</p>
+                                    <p className="text-sm font-medium">{post.To}</p>
                                 </div>
 
                             </div>
@@ -80,26 +80,29 @@ export default function Post() {
                     <div className="flex w-full flex-col justify-between pb-4">
                         <div className="flex w-full justify-between space-x-2 pb-2">
                             <div className="space-y-1 flex">
-                                <h3 className=" font-semibold leading-snug sm:pr-8">
+                                <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-600">
                                     Number of Passengers : &nbsp;
                                 </h3>
-                                <p className="text-sm">{post.NumberofPassengers}</p>
+                                <p className="text-sm font-medium">{post.NumberofPassengers}</p>
                             </div>
 
                         </div>
                         <div className="flex w-full justify-between space-x-2 pb-2">
                             <div className="space-y-1">
-                                <h3 className=" font-semibold leading-snug sm:pr-8">
+                                <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-600">
                                     Date of Ride  :&nbsp;
                                 </h3>
-                                <p className="text-sm">{post.DateofRide}</p>
+                                <p className="text-sm font-medium">{post.DateofRide}</p>
 
                             </div>
                             <div className="space-y-1 flex justify-center items-center">
+                                
                                 <h3 className=" font-semibold leading-snug sm:pr-8">
                                     Vechicle:&nbsp;
                                 </h3>
-                                <p className="text-sm">{post.Vechicle}</p>
+                                <span className="flex justify-center items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">
+                                    {post.Vechicle}
+                                </span>
                             </div>
                             {/* </div> */}
 
@@ -123,19 +126,19 @@ export default function Post() {
                             <div className="flex w-full flex-col justify-between pb-4">
                                 <div className="flex w-full justify-between space-x-2 pb-2">
                                     <div className="space-y-1 flex">
-                                        <h3 className="font-semibold leading-snug sm:pr-8">
+                                        <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Phone No:&nbsp;
                                         </h3>
-                                        <p className="text-sm">{post.Riderphone}</p>
+                                        <p className="text-sm font-semibold">{post.Riderphone}</p>
                                     </div>
 
                                 </div>
                                 <div className="flex w-full justify-between space-x-2 pb-2">
                                     <div className="space-y-1 flex">
-                                        <h3 className=" font-semibold leading-snug sm:pr-8">
+                                        <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Email id:&nbsp;
                                         </h3>
-                                        <p className="text-sm">{post.Rideremail}</p>
+                                        <p className="text-sm font-semibold">{post.Rideremail}</p>
                                     </div>
 
                                 </div>
