@@ -3,6 +3,12 @@
     "short_name":"Teleport",
     "start_url":"/",
     "icons":[
+      {
+        "src": "icons/apple-icon-144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "purpose": "any"
+      },
         {
           "src": "icons/manifest-icon-192.maskable.png",
           "sizes": "192x192",
