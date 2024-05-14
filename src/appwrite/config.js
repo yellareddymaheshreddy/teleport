@@ -15,7 +15,7 @@ export class Service {
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({ From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message,Rideid}) {
+    async createPost({ From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message,Rideid,Rideremail,Riderphone}) {
         try {
             console.log(Rideid ,"inapprite")
             return await this.databases.createDocument(
@@ -30,7 +30,9 @@ export class Service {
                     DateofRide,
                     Createdby,
                     Message,
-                    Rideid
+                    Rideid,
+                    Rideremail,
+                    Riderphone
                 }
             )
         } catch (error) {
@@ -38,7 +40,7 @@ export class Service {
         }
     }
 
-    async updatePost(Rideid, { From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message }) {
+    async updatePost(Rideid, { From, To, Vechicle, NumberofPassengers, DateofRide, Createdby, Message,Rideremail,Riderphone }) {
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -52,6 +54,8 @@ export class Service {
                     DateofRide,
                     Createdby,
                     Message,
+                    Rideremail,
+                    Riderphone
                 }
             )
         } catch (error) {

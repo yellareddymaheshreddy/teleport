@@ -4,7 +4,7 @@ import appwriteservice from '../appwrite/config'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { ID } from 'appwrite'
-import { notifysuccess } from './toast'
+import { notifyfail, notifysuccess } from './toast'
 import { addride, updateride } from '../store/ridesSlice'
 
 const PostForm = ({ ride }) => {
@@ -19,14 +19,15 @@ const PostForm = ({ ride }) => {
             NumberofPassengers: ride?.NumberofPassengers || '',
             DateofRide: ride?.DateofRide || '',
             Message: ride?.Message || '',
-            Rideid: ride?.Rideid || ""
+            Rideid: ride?.Rideid || "",
+            Rideremail: ride?.Rideremail || '',
+            Riderphone: ride?.Riderphone || ''
         }
     });
     const navigate = useNavigate();
     const userData = useSelector(state => state.auth.userData)
     const submit = async (data) => {
         if (ride) {
-
             dispatch(updateride({id:ride.Rideid,data}))
             const dbride = await appwriteservice.updatePost(ride.Rideid, { ...data })
             if (dbride) {
@@ -38,14 +39,18 @@ const PostForm = ({ ride }) => {
         else {
             const uniqueid=ID.unique();
             dispatch(addride({...data,NumberofPassengers: Number(data.NumberofPassengers),Createdby: userData.$id,Rideid:uniqueid}))
-            notifysuccess("Ride Created Successfully!")
             navigate(`/post/${uniqueid}`)
             const dbride = await appwriteservice.createPost({
                 ...data,
                 NumberofPassengers: Number(data.NumberofPassengers),
                 Createdby: userData.$id,
-                Rideid: uniqueid
+                Rideid: uniqueid,
             })
+            if(dbride){
+                notifysuccess("Ride Created Successfully!")
+            }else{
+                notifyfail("something went wrong when createing file on server")
+            }
         }
 
     }
@@ -169,7 +174,7 @@ const PostForm = ({ ride }) => {
                                                                 type="text"
                                                                 id="address"
                                                                 name="address"
-                                                                autoComplete="street-address"
+                                                                autoComplete="message"
                                                                 placeholder='Its a free ride ....'
                                                                 className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                                 {...register("Message", { required: true })}
@@ -194,14 +199,7 @@ const PostForm = ({ ride }) => {
                                                                 {listofvechicles.map((Vechicle) => <option key={Vechicle} value={Vechicle}>{Vechicle}</option>
                                                                 )}
                                                             </select>
-                                                            {/* <input
-                                                                type="text"
-                                                                name="cvc"
-                                                                id="cvc"
-                                                                autoComplete="csc"
-                                                                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                                                {...register("Vechicle", { required: true })}
-                                                            /> */}
+                                                            
                                                         </div>
                                                     </div>
 
@@ -211,9 +209,54 @@ const PostForm = ({ ride }) => {
                                             <hr className="my-8" />
                                             <div className="mt-10">
                                                 <h3 className="text-lg font-semibold text-gray-900">
-                                                    Thank You for the Ride!
+                                                    Contact Details!
                                                 </h3>
+                                                <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+                                                    <div className="sm:col-span-3">
+                                                    <label
+                                                            htmlFor="address"
+                                                            className="block text-sm font-medium text-gray-700"
+                                                        >
+                                                            Phone Number:
+                                                        </label>
+                                                        <div className="mt-1">
+                                                            <input
+                                                                type="text"
+                                                                id="address"
+                                                                name="address"
+                                                                autoComplete="phone"
+                                                                placeholder='Phone Number'
+                                                                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                                {...register("Riderphone", { required: true })}
 
+                                                            />
+
+                                                        </div>
+                                                    </div>
+                                                    <div className='sm: col-span-3'>
+                                                    <label
+                                                            htmlFor="address"
+                                                            className="block text-sm font-medium text-gray-700"
+                                                        >
+                                                            Email id:
+                                                        </label>
+                                                        <div className="mt-1">
+                                                            <input
+                                                                type="text"
+                                                                id="address"
+                                                                name="address"
+                                                                autoComplete="email-id"
+                                                                placeholder='Email id'
+                                                                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                                {...register("Rideremail", { required: true })}
+
+                                                            />
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
                                             </div>
                                             <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
 
