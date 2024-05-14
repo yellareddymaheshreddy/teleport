@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
 import { useDispatch, useSelector } from "react-redux";
 import { notifysuccess } from "./toast";
 import { deleteride } from "../store/ridesSlice";
 
-export default function Post() {
+export default  function Post() {
     const navigate = useNavigate();
-    const { slug } = useParams();
-    const allrides=useSelector(state=>state.rides.rides)
-    const [post, setPost] = useState({});
     const userData = useSelector((state) => state.auth.userData);
+    const { slug } = useParams();
+    const allrides= useSelector(state=>state.rides.rides)
+    const [post, setPost] = useState({});
     let isAuthor =post && userData ? post.Createdby === userData.$id : false;
     useEffect(() => {
         allrides.map((ride)=>{
             if(ride.Rideid==slug){
                 setPost(ride);
-                // 
             }
         })
         
-    }, [slug,navigate])
-
-     
-
+    }, [slug,navigate,allrides])
 
     const dispatch=useDispatch();
-
     
-
-
     const deletePost=()=>{
         notifysuccess("deletion sucessfull!")
         dispatch(deleteride(post.$id))

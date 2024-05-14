@@ -15,10 +15,10 @@ const EditRide = () => {
                 setrides(ride)
             }
         })
-    }, [slug,navigate])
+    }, [slug,navigate,allrides])
     
     return ride?(
-        <div>
+        <div >
             <PostForm ride={ride}/>
         </div>
     ):(null);

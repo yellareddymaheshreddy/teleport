@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 const Allrides = () => {
   const navigate=useNavigate();
-
   const currentUser =useSelector(state=>state.auth.userData.$id);
   let rides=useSelector(state=>state.rides.rides)
   const currentDate=new Date().getFullYear()+"-0"+(new Date().getMonth()+1)+"-"+new Date().getDate();

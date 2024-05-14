@@ -24,7 +24,6 @@ const PostForm = ({ ride }) => {
     });
     const navigate = useNavigate();
     const userData = useSelector(state => state.auth.userData)
-
     const submit = async (data) => {
         if (ride) {
 
