@@ -11,6 +11,7 @@ const PostForm = ({ ride }) => {
     const date = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
     const listofvechicles = ["Bike","Car", "Auto",  "Bus", "Lorry", "Ship", "Airplane", "Helicopter", "Scooter", "Tuk-tuk"];
     const dispatch =useDispatch();
+    const userData = useSelector(state => state.auth.userData)
     const { register, handleSubmit } = useForm({
         defaultValues: {
             From: ride?.From || '',
@@ -20,12 +21,11 @@ const PostForm = ({ ride }) => {
             DateofRide: ride?.DateofRide || '',
             Message: ride?.Message || '',
             Rideid: ride?.Rideid || "",
-            Rideremail: ride?.Rideremail || '',
-            Riderphone: ride?.Riderphone || ''
+            Rideremail: ride?.Rideremail || userData.email || '',
+            Riderphone: ride?.Riderphone || userData.phone||''
         }
     });
     const navigate = useNavigate();
-    const userData = useSelector(state => state.auth.userData)
     const submit = async (data) => {
         if (ride) {
             dispatch(updateride({id:ride.Rideid,data}))

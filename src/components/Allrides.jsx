@@ -8,7 +8,7 @@ const Allrides = () => {
   let rides = useSelector(state => state.rides.rides)
   const currentDate = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
 
-  if (!rides) {
+  if (rides.length==0) {
     return (
       <section className='min-h-[40vh] flex justify-center items-center'>
         <div className="mx-4 my-8 p-2 md:px-4 md:py-8 text-center bg-slate-100 md:m-10 rounded-md ">
