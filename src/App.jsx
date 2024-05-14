@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import authService from "./appwrite/auth"
-import { login, logout } from "./store/authSlice"
+import { login, logout, setdeffer } from "./store/authSlice"
 import { Footer, Navbar,Loading } from './components'
 import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -11,10 +11,7 @@ import service from './appwrite/config'
 
 
 function App() {
-  const [deferredPrompt, setdefferedPrompt] = useState({})
-  window.addEventListener('beforeinstallprompt', (e) => {
-      setdefferedPrompt = e;
-  });
+  
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   
@@ -24,6 +21,9 @@ function App() {
       .then((userData) => {
         if (userData) {
           dispatch(login({ userData }))
+          window.addEventListener('beforeinstallprompt', (e) => {
+            dispatch(setdeffer(e))
+        });
           service.getPosts().then((rides) => {
             if (rides) {
             dispatch(setrides(rides.documents))
