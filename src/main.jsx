@@ -26,7 +26,6 @@ const router = createBrowserRouter([{
     <App />,
     // </AuthLayout>,
   errorElement: <><Navbar />
-  
     <ErrorPage />
     <Footer />
   </>,
