@@ -352,7 +352,7 @@ const Contact = () => {
                                     <div class="relative flex-shrink-0">
                                         <img
                                             class="relative h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
-                                            src="./Developer.jpg"
+                                            src="./Developer.webp"
                                             alt=""
                                         />
                                     </div>

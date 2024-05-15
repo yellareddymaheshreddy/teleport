@@ -64,6 +64,7 @@ const Landingpage = () => {
                     <div>
                         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
                             <img src="./carblue.svg" alt="car" className='h-10 w-10' />
+                            
                             {/* <svg
                                 className="h-9 w-9 text-blue-600"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +99,7 @@ const Landingpage = () => {
                     <div>
                         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
                             <svg
-                                className="h-9 w-9 text-green-600"
+                                className="h-10 w-10 text-green-600"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -107,7 +108,7 @@ const Landingpage = () => {
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    strokeWidth="1.5"
+                                    strokeWidth="2"
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                                 ></path>
                             </svg>

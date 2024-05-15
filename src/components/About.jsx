@@ -37,7 +37,7 @@ const About = () => {
         <div className="grid grid-cols-1 gap-4 gap-y-6  py-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-md border">
             <img
-              src="./Developer.jpg"
+              src="./Developer.webp"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">

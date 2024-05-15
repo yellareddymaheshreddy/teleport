@@ -129,7 +129,7 @@ export default function Post() {
                                         <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Rider Name:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold capitalize">{ride.Ridername}</p>
+                                        <p className="text-sm font-semibold capitalize">{ride.Ridername? ride.name: "N/A"}</p>
                                     </div>
 
                                 </div>
@@ -138,7 +138,7 @@ export default function Post() {
                                         <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Phone No:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold">{ride.Riderphone}</p>
+                                        <p className="text-sm font-semibold">{ride.Riderphone? ride.Riderphone: "N/A"}</p>
                                     </div>
 
                                 </div>
@@ -147,7 +147,7 @@ export default function Post() {
                                         <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Email id:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold">{ride.Rideremail}</p>
+                                        <p className="text-sm font-semibold">{ride.Rideremail? ride.Rideremail: "N/A"}</p>
                                     </div>
 
                                 </div>
