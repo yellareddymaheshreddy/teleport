@@ -129,7 +129,7 @@ export default function Post() {
                                         <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Rider Name:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold capitalize">{ride.Ridername? ride.name: "N/A"}</p>
+                                        <p className="text-sm font-semibold capitalize">{ride.Ridername? ride.Ridername: "N/A"}</p>
                                     </div>
 
                                 </div>
