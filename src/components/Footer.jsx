@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
-  return (
-    <div>
-      <hr className="mt-6" />
-            <section className="relative overflow-hidden bg-white py-8">
+    return (
+        <div className='sticky'>
+            <hr className="mt-6" />
+            <section className="relative overflow-hidden bg-white py-8 lg:py-16">
                 <div className="container relative z-10 mx-auto px-4">
-                    <div className="-m-8 flex flex-wrap items-center justify-between">
-                        <div className="w-auto p-8">
+                    <div className="-m-8 flex flex-wrap items-center justify-center  lg:justify-between lg:mx-2">
+                        <div className="w-auto px-8 py-2">
                             <a href="#">
                                 <div className="inline-flex items-center">
                                     <img src="/favicon.svg" alt="favicon" width={46} height={46} />
@@ -15,31 +16,31 @@ const Footer = () => {
                                 </div>
                             </a>
                         </div>
-                        <div className="w-auto p-8">
-                            <ul className="-m-5 flex flex-wrap items-center">
+                        <div className="w-auto px-8 py-2">
+                            <ul className="-m-5 justify-between mx-auto flex flex-wrap items-center ">
                                 <li className="p-5">
-                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                    <Link className="font-medium text-gray-600 hover:text-gray-700" to="/policy">
                                         Privacy Policy
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="p-5">
-                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                    <Link className="font-medium text-gray-600 hover:text-gray-700" to="/policy">
                                         Terms of Service
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="p-5">
-                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                    <Link className="font-medium text-gray-600 hover:text-gray-700" to="/policy">
                                         Return Policy
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="p-5">
-                                    <a className="font-medium text-gray-600 hover:text-gray-700" href="#">
+                                    <Link className="font-medium text-gray-600 hover:text-gray-700" to="/contact">
                                         Contact Us
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
-                        <div className="w-auto p-8">
+                        <div className="w-auto px-8 py-2">
                             <div className="-m-1.5 flex flex-wrap">
                                 <div className="w-auto p-1.5">
                                     <a href="#">
@@ -100,8 +101,8 @@ const Footer = () => {
                     </div>
                 </div>
             </section>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Footer

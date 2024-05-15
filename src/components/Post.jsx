@@ -11,8 +11,8 @@ export default function Post() {
     const userData = useSelector((state) => state.auth.userData);
     const { slug } = useParams();
     const allrides = useSelector(state => state.rides.rides)
-    const [post, setPost] = useState({});
-    let isAuthor = post && userData ? post.Createdby === userData.$id : false;
+    const [ride, setPost] = useState({});
+    let isAuthor = ride && userData ? ride.Createdby === userData.$id : false;
     useEffect(() => {
 
         allrides.map((ride) => {
@@ -27,21 +27,21 @@ export default function Post() {
 
     const deletePost = () => {
         notifysuccess("deletion sucessfull!")
-        dispatch(deleteride(post.$id))
-        appwriteService.deletePost(post.$id)
+        dispatch(deleteride(ride.$id))
+        appwriteService.deletePost(ride.$id)
         navigate("/")
 
     }
 
 
-    return post ? (
+    return ride ? (
         <div className="mx-3 md:mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-4 sm:p-10 sm:px-16 shadow-lg rounded-lg border">
             <h2 className="text-3xl font-bold">Ride Details:</h2>
             <div className="space-y-1 flex">
                 <h3 className="text-lg font-semibold leading-snug sm:pr-8">
-                   Rider Message:&nbsp;
+                    Rider Message:&nbsp;
                 </h3>
-                <p className="mt-3 text-sm font-medium text-gray-700">{post.Message}</p>
+                <p className="mt-3 text-sm font-medium text-gray-700">{ride.Message}</p>
             </div>
             <ul className="flex flex-col divide-y divide-gray-200">
                 <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
@@ -57,7 +57,7 @@ export default function Post() {
                                     <h3 className="text-lg font-semibold leading-snug sm:pr-8 text-gray-600">
                                         From:&nbsp;
                                     </h3>
-                                    <p className="text-sm font-medium">{post.From}</p>
+                                    <p className="text-sm font-medium">{ride.From}</p>
                                 </div>
 
                             </div>
@@ -66,7 +66,7 @@ export default function Post() {
                                     <h3 className="text-lg font-semibold leading-snug sm:pr-8 text-gray-600">
                                         To:&nbsp;
                                     </h3>
-                                    <p className="text-sm font-medium">{post.To}</p>
+                                    <p className="text-sm font-medium">{ride.To}</p>
                                 </div>
 
                             </div>
@@ -83,7 +83,7 @@ export default function Post() {
                                 <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-600">
                                     Number of Passengers : &nbsp;
                                 </h3>
-                                <p className="text-sm font-medium">{post.NumberofPassengers}</p>
+                                <p className="text-sm font-medium">{ride.NumberofPassengers}</p>
                             </div>
 
                         </div>
@@ -92,16 +92,16 @@ export default function Post() {
                                 <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-600">
                                     Date of Ride  :&nbsp;
                                 </h3>
-                                <p className="text-sm font-medium">{post.DateofRide}</p>
+                                <p className="text-sm font-medium">{ride.DateofRide}</p>
 
                             </div>
                             <div className="space-y-1 flex justify-center items-center">
-                                
+
                                 <h3 className=" font-semibold leading-snug sm:pr-8">
                                     Vechicle:&nbsp;
                                 </h3>
                                 <span className="flex justify-center items-center rounded-full bg-green-100 px-4 py-1 text-xs font-semibold leading-5 text-green-800">
-                                    {post.Vechicle}
+                                    {ride.Vechicle}
                                 </span>
                             </div>
                             {/* </div> */}
@@ -117,19 +117,28 @@ export default function Post() {
                             <div className="flex w-full justify-between space-x-2 pb-2">
                                 <div className="space-y-1 flex">
                                     <h3 className="text-lg font-semibold leading-snug sm:pr-8 mb-6">
-                                        Contact Details:&nbsp;
+                                        Rider Contact Details:&nbsp;
                                     </h3>
                                 </div>
 
 
                             </div>
                             <div className="flex w-full flex-col justify-between pb-4">
+                            <div className="flex w-full justify-between space-x-2 pb-2">
+                                    <div className="space-y-1 flex">
+                                        <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
+                                            Rider Name:&nbsp;
+                                        </h3>
+                                        <p className="text-sm font-semibold capitalize">{ride.Ridername}</p>
+                                    </div>
+
+                                </div>
                                 <div className="flex w-full justify-between space-x-2 pb-2">
                                     <div className="space-y-1 flex">
                                         <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Phone No:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold">{post.Riderphone}</p>
+                                        <p className="text-sm font-semibold">{ride.Riderphone}</p>
                                     </div>
 
                                 </div>
@@ -138,7 +147,7 @@ export default function Post() {
                                         <h3 className=" font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Email id:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold">{post.Rideremail}</p>
+                                        <p className="text-sm font-semibold">{ride.Rideremail}</p>
                                     </div>
 
                                 </div>
@@ -147,7 +156,7 @@ export default function Post() {
 
                         </div>
                         <div className="flex justify-center items-center">
-                            <Link to={`tel:${post.Riderphone}`}>
+                            <Link to={`tel:${ride.Riderphone}`}>
                                 <button
                                     type="button"
                                     className="min-w-max rounded-full bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -165,8 +174,8 @@ export default function Post() {
                 <div className="flex justify-end space-x-4">
                     <button
                         onClick={() => {
-                            // navigate(`/edit-post/${post.$id}`)
-                            navigate(`/edit-post/${post.Rideid}`)
+                            // navigate(`/edit-ride/${ride.$id}`)
+                            navigate(`/edit-ride/${ride.Rideid}`)
                         }}
                         type="button"
                         className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black bg-green-50"

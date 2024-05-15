@@ -6,22 +6,20 @@ import { Link } from 'react-router-dom';
 const Landingpage = () => {
 
     const navigate = useNavigate();
-    const images = ["rideshare1.png", "rideshare2.png"];
+    const images = ["journeytruck1.jpg", "journeytruck.jpg"];
     return (
-        <div className="w-full">
-
-
+        <div className="w-full" >
             <div className="relative w-full bg-white">
                 <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
                     <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
                         <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
                             <div className="rounded-full bg-white p-1 px-2">
-                                <p className="text-sm font-medium">We&#x27; hiring</p>
+                                <p className="text-sm font-medium">Happy&#x27; </p>
                             </div>
-                            <p className="text-sm font-medium">Join our team →</p>
+                            <p className="text-sm font-medium">Journey →</p>
                         </div>
                         <h1 className="mt-8 text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
-                            People who care about your growth
+                            Make friends by travelling
                         </h1>
                         <p className="mt-8 text-lg text-gray-700">
                             Service to others is the rent you pay for your room here on earth.
@@ -32,12 +30,12 @@ const Landingpage = () => {
 
                                 <button
                                     onClick={() => {
-                                        navigate("/add-post")
+                                        navigate("/add-ride")
                                     }}
                                     type="button"
                                     className="rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                 >
-                                    Donate Ride
+                                    Post Ride
                                 </button>
 
                             </div>
@@ -46,7 +44,7 @@ const Landingpage = () => {
                                 <svg fill="#161313" height="50px" width="50px" version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="79 -152 413.5 561" xmlSpace="preserve" stroke="#161313"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M230.4-103.3c0-25.5,20.7-46.2,46.2-46.2c25.5,0,46.2,20.7,46.2,46.2c0,25.5-20.7,46.2-46.2,46.2 C251.1-57.1,230.4-77.8,230.4-103.3z M467.8,169.1h-20.1v157.2h20.1c14.4,0,21.7-11.3,21.7-21.6c0,0,0-113.3,0-114 C489.4,180.5,481.3,169.1,467.8,169.1z M407.2,169h29.5v157.2H332v54.1c0,36.2-53.2,35.1-53.2,0V169.1h-8.8v211.1 c0,35.1-52.8,36.2-52.8,0V13.5L92.5-113.4c-21.5-21.5,9.9-52.9,31.4-31.3L221.4-45l102.5-0.1c32.1,0,56.2,29.8,56.2,58.1v122.2 c8.6,0,13.7,0,13.7,0c8.6,0,13.5,4.2,13.5,12.3V169z M341.4,27.4H332V169h9.4v-21.3v-0.2V27.4z M394.2,147.8h-40.3v21.3h40.3V147.8z "></path> </g></svg>
                                 <button
                                     onClick={() => {
-                                        navigate("/all-posts");
+                                        navigate("/all-rides");
                                     }}
                                     type="button"
                                     className="rounded-full bg-black px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
@@ -61,11 +59,12 @@ const Landingpage = () => {
                     </div>
                 </div>
             </div>
-            <div className="mx-auto my-32 max-w-7xl px-2 lg:px-8">
+            <div className="mx-auto my-10 max-w-7xl px-2 lg:px-8">
                 <div className="grid grid-cols-1 gap-y-8 text-center sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
                     <div>
                         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-blue-100">
-                            <svg
+                            <img src="./carblue.svg" alt="car" className='h-10 w-10' />
+                            {/* <svg
                                 className="h-9 w-9 text-blue-600"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -78,7 +77,7 @@ const Landingpage = () => {
                                     strokeWidth="1.5"
                                     d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
                                 ></path>
-                            </svg>
+                            </svg> */}
                         </div>
                         <h3 className="mt-8 text-lg font-semibold text-black">Make Friends</h3>
                         <p className="mt-4 text-sm text-gray-600">
@@ -87,20 +86,7 @@ const Landingpage = () => {
                     </div>
                     <div>
                         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-orange-100">
-                            <svg
-                                className="h-9 w-9 text-orange-600"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="1.5"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                                ></path>
-                            </svg>
+                            <img src="./happy.svg" alt="happy face" className='h-12 w-12'/>
                         </div>
                         <h3 className="mt-8 text-lg font-semibold text-black">
                             Help Others &amp; Stay Happy
@@ -135,20 +121,7 @@ const Landingpage = () => {
                     </div>
                     <div>
                         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-100">
-                            <svg
-                                className="h-9 w-9 text-red-600"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="1.5"
-                                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
-                                ></path>
-                            </svg>
+                            <img src="./globe.svg" alt="globe  "  className='h-12 w-12'/>
                         </div>
                         <h3 className="mt-8 text-lg font-semibold text-black">Explore the world </h3>
                         <p className="mt-4 text-sm text-gray-600">

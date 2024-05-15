@@ -4,13 +4,14 @@ import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Email from './Email';
 import conf from '../conf/conf';
+import { Loading } from '.';
 
 
 const Contact = () => {
     const btn = useRef();
-    const email=useRef();
-    const firstname=useRef();
-    const message=useRef();
+    const email = useRef();
+    const firstname = useRef();
+    const message = useRef();
     let toastdesign = {
         position: "top-right",
         autoClose: 5000,
@@ -29,50 +30,50 @@ const Contact = () => {
     const sendEmailtocustomer = (e) => {
         e.preventDefault();
 
-        emailjs
-            .sendForm(conf.mailjsserviceid, conf.mailjstemplate, form.current, {
-                publicKey: conf.mailjspublickey,
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                    form.current.querySelectorAll("Input").forEach(input => {
-                        input.value = ""
-                    });
-                    form.current.querySelector("textarea").value = ""
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                },
-            );
+        // emailjs
+        //     .sendForm(conf.mailjsserviceid, conf.mailjstemplate, form.current, {
+        //         publicKey: conf.mailjspublickey,
+        //     })
+        //     .then(
+        //         () => {
+        //             console.log('SUCCESS!');
+        //             form.current.querySelectorAll("Input").forEach(input => {
+        //                 input.value = ""
+        //             });
+        //             form.current.querySelector("textarea").value = ""
+        //         },
+        //         (error) => {
+        //             console.log('FAILED...', error.text);
+        //         },
+        //     );
     };
 
-   
+
 
 
     const sendEmail = (e) => {
         e.preventDefault();
         // checking for empty fields and sending a fail toast
-        let emptyfields=[];
-        if(!firstname.current.value){
+        let emptyfields = [];
+        if (!firstname.current.value) {
             emptyfields.push("First Name ")
-        }if(!email.current.value){
+        } if (!email.current.value) {
             emptyfields.push("Email ")
-        }if(!message.current.value){
+        } if (!message.current.value) {
             emptyfields.push("Message ")
         }
-        if(emptyfields.length!=0){
+        if (emptyfields.length != 0) {
             notifyfail(`Please Fill ${emptyfields.toString()}`);
             return
         }
         //changing the design of the send button after click
-        const divs=btn.current.querySelector("div");
+        const divs = btn.current.querySelector("div");
         btn.current.classList.remove("bg-black")
-        btn.current.disabled=true
+        btn.current.disabled = true
         divs.classList.remove("right-[-40px]", "opacity-0")
         divs.classList.add("right-0", "opacity-100")
         btn.current.querySelector("path").style.strokeDashoffset = "0"
-        btn.current.querySelector("p").innerText="Message Sent!";
+        btn.current.querySelector("p").innerText = "Message Sent!";
 
         let details = [];
         form.current.querySelectorAll("input").forEach(input => {
@@ -160,12 +161,12 @@ const Contact = () => {
             message => {
                 notifysuccess(message);
                 form.current.querySelectorAll("Input").forEach(input => {
-                    input.value=""
+                    input.value = ""
                 });
-                form.current.querySelector("textarea").value=""
+                form.current.querySelector("textarea").value = ""
                 setTimeout(() => {
-                   
-                    btn.current.querySelector("p").innerText="Send Message";
+
+                    btn.current.querySelector("p").innerText = "Send Message";
                     btn.current.disabled = false;
                     btn.current.classList.add("bg-black")
                     divs.classList.add("right-[-40px]", "opacity-0")
@@ -177,13 +178,13 @@ const Contact = () => {
         ).catch(
             message => {
                 notifyfail(message)
-                
-                btn.current.disabled=false;
+
+                btn.current.disabled = false;
                 btn.current.classList.add("bg-blue-600")
                 divs.classList.add("right-[-40px]", "opacity-0")
                 divs.classList.remove("right-0", "opacity-100")
                 btn.current.querySelector("path").style.strokeDashoffset = "34"
-                btn.current.querySelector("p").innerText="ReSend Message";
+                btn.current.querySelector("p").innerText = "ReSend Message";
             }
         );
     }
@@ -193,7 +194,7 @@ const Contact = () => {
 
             <div>
                 <div className="mx-auto max-w-7xl px-4">
-                    <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
+                    <div className="flex flex-col space-y-8 pb-4 pt-6 md:pt-14">
                         <div className="mx-auto max-w-max rounded-full border bg-gray-50 p-1 px-3">
                             <p className="text-center text-xs font-semibold leading-normal md:text-sm">
                                 Share your thoughts
@@ -202,11 +203,8 @@ const Contact = () => {
                         <p className="text-center text-3xl font-bold text-gray-900 md:text-5xl md:leading-10">
                             Love to hear from you
                         </p>
-                        <p className="mx-auto max-w-4xl text-center text-base text-gray-600 md:text-xl">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                            veritatis voluptates neque itaque repudiandae sint, explicabo assumenda
-                            quam ratione placeat?
-                        </p>
+                        
+
                     </div>
                     <div className="mx-auto max-w-7xl py-12 md:py-24">
                         <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
@@ -282,7 +280,7 @@ const Contact = () => {
                                                 className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                                                 type="tel"
                                                 id="phone_number"
-                                                placeholder="Phone number"
+                                                placeholder="Phone number &nbsp; (Optional)"
                                                 name='user_phone'
                                             />
                                         </div>
@@ -312,7 +310,7 @@ const Contact = () => {
 
                                         </button> */}
                                         <div className='w-full flex justify-center items-center '>
-                                            <button ref={btn} style={{  height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "borderRadius": "40px", "text-align": "center", "boxShadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 mt-8'>
+                                            <button ref={btn} style={{ height: "60px", border: "none", outline: "none", color: "#fff", "font-size": "22px", "borderRadius": "40px", "text-align": "center", "boxShadow": " 0 6px 20px -5px rgba(0,0,0,0.4)", "position": "relative", "overflow": "hidden", "cursor": "pointer", transition: "1s" }} className='bg-black w-full disabled:bg-green-600 mt-8'>
                                                 <p>Send Message</p>
                                                 <div style={{
                                                     width: "60px",
@@ -341,18 +339,39 @@ const Contact = () => {
                                     </form>
                                 </div>
                             </div>
-                            <img
-                                alt="Contact us"
-                                className="hidden max-h-full w-full rounded-lg object-cover lg:block"
-                                src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=687&amp;h=800&amp;q=80"
-                            />
+                            <div className='hidden lg:block'>
+
+                                <Loading height="min-h-full"/>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <section class="px-4 mx-2 py-10 md:px-0 border rounded-lg shadow-lg md:mx-8">
+                            <div class="mx-auto max-w-4xl">
+                                <div class="md:flex md:items-center md:justify-center md:space-x-14">
+                                    <div class="relative flex-shrink-0">
+                                        <img
+                                            class="relative h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
+                                            src="./Developer.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="mt-10 md:mt-0 ">
+                                        <blockquote>
+                                            <p class="text-xl text-black">
+                                                “This website is developed only for making <span className='text-black font-medium'>Friends</span> not for making  Money!”
+                                            </p>
+                                        </blockquote>
+                                        <p class="mt-7 text-lg font-semibold text-black">Mahesh Reddy</p>
+                                        <p class="mt-1 text-base text-gray-600"> Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                 <hr className="mt-6" />
             </div>
+            
             <script src="https://smtpjs.com/v3/smtp.js"></script>
-
         </div>
     )
 }

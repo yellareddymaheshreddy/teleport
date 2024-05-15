@@ -6,7 +6,7 @@ const store = configureStore({
     reducer: {
         auth : authSlice,
         rides:ridesSlice,
-        //TODO: add more slices here for posts
+        //TODO: add more slices here for rides
     }
 });
 

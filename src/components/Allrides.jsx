@@ -27,7 +27,7 @@ const Allrides = () => {
               <span className="mx-2">Home</span>
             </Link>
             <Link
-              to={"/add-post"}
+              to={"/add-ride"}
               className="mt-4 inline-flex  items-center justify-center overflow-hidden rounded-lg bg-blue-600 px-4 py-2.5 text-sm text-white shadow transition-colors duration-300 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80 sm:mx-2 sm:mt-0 sm:w-auto"
             >
 
@@ -42,7 +42,7 @@ const Allrides = () => {
   return (
 
 
-    <section className="mx-auto  max-w-7xl px-4 py-4 ">
+    <section className="mx-auto  max-w-7xl px-4 py-4 min-h-[70vh]">
       <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
         <div>
           <h2 className="text-lg font-semibold">All Rides</h2>
@@ -55,7 +55,7 @@ const Allrides = () => {
           <button
             type="button"
             onClick={() => {
-              navigate('/add-post')
+              navigate('/add-ride')
             }}
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >

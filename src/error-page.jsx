@@ -1,15 +1,16 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError,useNavigate } from "react-router-dom";
 
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
+  const history=useNavigate();
 
   return (
 <>
   <div className="flex items-center justify-center px-2 md:px-0 min-h-[70vh]" id="error-page">
     <div className="lg:flex lg:items-center lg:space-x-10">
       <img
-        src="https://illustrations.popsy.co/white/resistance-band.svg"
+        src="./error.svg"
         alt="question-mark"
         className="h-[300px] w-auto"
       />
@@ -25,6 +26,7 @@ export default function ErrorPage() {
         <i>{error.statusText || error.message}</i>
         <div className="mt-6 flex items-center space-x-3">
           <button
+          onClick={() => history(-1)}
             type="button"
             className="inline-flex items-center rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
@@ -46,6 +48,7 @@ export default function ErrorPage() {
             Go back
           </button>
           <button
+            onClick={()=>history('/contact')}
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >

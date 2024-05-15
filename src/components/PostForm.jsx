@@ -9,8 +9,8 @@ import { addride, updateride } from '../store/ridesSlice'
 
 const PostForm = ({ ride }) => {
     const date = new Date().getFullYear() + "-0" + (new Date().getMonth() + 1) + "-" + new Date().getDate();
-    const listofvechicles = ["Bike","Car", "Auto",  "Bus", "Lorry", "Ship", "Airplane", "Helicopter", "Scooter", "Tuk-tuk"];
-    const dispatch =useDispatch();
+    const listofvechicles = ["Bike", "Car", "Auto", "Bus", "Lorry", "Ship", "Airplane", "Helicopter", "Scooter", "Tuk-tuk"];
+    const dispatch = useDispatch();
     const userData = useSelector(state => state.auth.userData)
     const { register, handleSubmit } = useForm({
         defaultValues: {
@@ -22,33 +22,35 @@ const PostForm = ({ ride }) => {
             Message: ride?.Message || '',
             Rideid: ride?.Rideid || "",
             Rideremail: ride?.Rideremail || userData.email || '',
-            Riderphone: ride?.Riderphone || userData.phone||''
+            Riderphone: ride?.Riderphone || userData.phone || '+91',
+            Ridername: ride?.Ridername || userData.name || '',
+
         }
     });
     const navigate = useNavigate();
     const submit = async (data) => {
         if (ride) {
-            dispatch(updateride({id:ride.Rideid,data}))
+            dispatch(updateride({ id: ride.Rideid, data }))
             const dbride = await appwriteservice.updatePost(ride.Rideid, { ...data })
             if (dbride) {
-                navigate(`/post/${ride.Rideid}`)
+                navigate(`/ride/${ride.Rideid}`)
             }
             notifysuccess("Ride Updated Successfully!")
 
         }
         else {
-            const uniqueid=ID.unique();
-            dispatch(addride({...data,NumberofPassengers: Number(data.NumberofPassengers),Createdby: userData.$id,Rideid:uniqueid}))
-            navigate(`/post/${uniqueid}`)
+            const uniqueid = ID.unique();
+            dispatch(addride({ ...data, NumberofPassengers: Number(data.NumberofPassengers), Createdby: userData.$id, Rideid: uniqueid }))
+            navigate(`/ride/${uniqueid}`)
             const dbride = await appwriteservice.createPost({
                 ...data,
                 NumberofPassengers: Number(data.NumberofPassengers),
                 Createdby: userData.$id,
                 Rideid: uniqueid,
             })
-            if(dbride){
+            if (dbride) {
                 notifysuccess("Ride Created Successfully!")
-            }else{
+            } else {
                 notifyfail("something went wrong when createing file on server")
             }
         }
@@ -100,16 +102,16 @@ const PostForm = ({ ride }) => {
                                                         placeholder="Banglore....."
                                                         id="name"
                                                         {...register("To", { required: true })}
-                                                       
+
                                                     />
                                                 </div>
                                             </div>
-                                            <hr className="my-8" />
-                                            <div className="mt-10">
+                                            <hr className="my-4" />
+                                            <div className="mt-5">
                                                 <h3 className="text-lg font-semibold text-gray-900">
                                                     Vechicle details
                                                 </h3>
-                                                <div className="mt-6 grid  gap-x-4 gap-y-6 sm:grid-cols-4">
+                                                <div className="mt-2 grid  gap-x-4 gap-y-4 sm:grid-cols-4">
 
                                                     <div className="col-span-2 ">
                                                         <label
@@ -120,7 +122,7 @@ const PostForm = ({ ride }) => {
                                                         </label>
                                                         <div className="mt-1">
                                                             <input
-                                                                
+
                                                                 min={date}
                                                                 type="date"
                                                                 name="expiration-date"
@@ -156,12 +158,12 @@ const PostForm = ({ ride }) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr className="my-8" />
-                                            <div className="mt-10">
+                                            <hr className="my-4" />
+                                            <div className="mt-5">
                                                 <h3 className="text-lg font-semibold text-gray-900">
                                                     Vechicle Details
                                                 </h3>
-                                                <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+                                                <div className="mt-2 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-3">
                                                     <div className="sm:col-span-3">
                                                         <label
                                                             htmlFor="address"
@@ -191,29 +193,50 @@ const PostForm = ({ ride }) => {
                                                             Vechicle Type:
                                                         </label>
                                                         <div className="mt-1">
-                                                            <select defaultValue={"Bike"} name="vechicle" id="vechicle"  className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                            <select defaultValue={"Bike"} name="vechicle" id="vechicle" className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                                                                 {...register("Vechicle", { required: true })}
                                                                 placeholder="Car"
-                                                            >   
-                                                            
+                                                            >
+
                                                                 {listofvechicles.map((Vechicle) => <option key={Vechicle} value={Vechicle}>{Vechicle}</option>
                                                                 )}
                                                             </select>
-                                                            
+
                                                         </div>
                                                     </div>
 
 
                                                 </div>
                                             </div>
-                                            <hr className="my-8" />
-                                            <div className="mt-10">
+                                            <hr className="my-4" />
+                                            <div className="mt-5">
                                                 <h3 className="text-lg font-semibold text-gray-900">
-                                                    Contact Details!
+                                                    Rider Contact Details!
                                                 </h3>
-                                                <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+                                                <div className="mt-2 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-3">
                                                     <div className="sm:col-span-3">
-                                                    <label
+                                                        <label
+                                                            htmlFor="address"
+                                                            className="block text-sm font-medium text-gray-700"
+                                                        >
+                                                            Rider Name:
+                                                        </label>
+                                                        <div className="mt-1">
+                                                            <input
+                                                                type="text"
+                                                                id="address"
+                                                                name="address"
+                                                                autoComplete="phone"
+                                                                placeholder='Phone Number'
+                                                                className="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                                {...register("Ridername", { required: true })}
+
+                                                            />
+
+                                                        </div>
+                                                    </div>
+                                                    <div className="sm:col-span-3">
+                                                        <label
                                                             htmlFor="address"
                                                             className="block text-sm font-medium text-gray-700"
                                                         >
@@ -234,7 +257,7 @@ const PostForm = ({ ride }) => {
                                                         </div>
                                                     </div>
                                                     <div className='sm: col-span-3'>
-                                                    <label
+                                                        <label
                                                             htmlFor="address"
                                                             className="block text-sm font-medium text-gray-700"
                                                         >
@@ -258,7 +281,7 @@ const PostForm = ({ ride }) => {
 
                                                 </div>
                                             </div>
-                                            <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
+                                            <div className="mt-5 flex justify-end border-t border-gray-200 pt-6">
 
                                                 <button
                                                     type="submit"

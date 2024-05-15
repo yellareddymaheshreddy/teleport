@@ -10,8 +10,8 @@ const RideCard = ({ From, To, Message, Vechicle, NumberofPassengers, DateofRide,
     <>
 
       <td className="whitespace-nowrap px-4 py-4 ">
-        <div className="flex items-center" onClick={() => {
-          navigate(`/post/${Rideid}`)
+        <div className="flex items-center cursor-pointer" onClick={() => {
+          navigate(`/ride/${Rideid}`)
         }}>
           <div className="h-15 w-15 flex-shrink-0 rounded-full shadow-lg border p-2 min-w-max">
             <img src="./bike.svg" alt="" />
