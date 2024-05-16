@@ -12,7 +12,7 @@ const Navbar = ({install}) => {
   const [menu, setmenu] = React.useState(false)
 
   return (
-    <div className="relative w-full bg-white">
+    <div className="relative w-full">
       {menu && (<div className='absolute w-screen h-screen z-10 backdrop-blur-[3px] ' onClick={()=>{
         setmenu(!menu) 
       }}>

@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div className='sticky'>
             <hr className="mt-6" />
-            <section className="relative overflow-hidden bg-white py-8 lg:py-16">
+            <section className="relative overflow-hidden py-8 lg:py-16">
                 <div className="container relative z-10 mx-auto px-4">
                     <div className="-m-8 flex flex-wrap items-center justify-center  lg:justify-between lg:mx-2">
                         <div className="w-auto px-8 py-2">
