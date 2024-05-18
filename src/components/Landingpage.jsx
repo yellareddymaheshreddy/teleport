@@ -146,7 +146,6 @@ const Landingpage = () => {
                     <div className="cursor-pointer rounded-md border border-gray-400 shadow-lg transition-all duration-1000">
                             <span 
                             onClick={(e)=>{
-                                console.log("object")
                                 const element=e.currentTarget.querySelector("#m")
                                 if(element.classList.contains("hidden")){
                                     element.classList.remove("opacity-0","hidden")

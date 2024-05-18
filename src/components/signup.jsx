@@ -102,7 +102,7 @@ function Signup() {
             if (userData) {
                 notifysuccess("signup succesfull!")
                 const userData = await authService.getCurrentUser()
-                if (userData) dispatch(login(userData));
+                if (userData) dispatch(login({userData}));
                 navigate("/")
                 sendEmail()
             }

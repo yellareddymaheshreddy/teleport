@@ -21,16 +21,16 @@ function App() {
         setprompt(e);
     });
 
-    
+    service.getPosts().then((rides) => {
+      if (rides) {
+      dispatch(setrides(rides.documents))
+      }
+    })
     authService.getCurrentUser()
       .then((userData) => {
         if (userData) {
           dispatch(login({ userData }))
-          service.getPosts().then((rides) => {
-            if (rides) {
-            dispatch(setrides(rides.documents))
-            }
-          })
+          
         } else {
           dispatch(logout())
         }
