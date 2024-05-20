@@ -5,3 +5,9 @@
 .black-shadow{
     box-shadow: 6px 6px 18px 0px black;
 }
+.mnmsg{
+    background-image: linear-gradient(90deg, #550564 20%, #d013be 80%);
+    color: white;
+    border-radius: 20px;
+    padding: 22px;
+}

@@ -2,16 +2,24 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {Carousel} from './';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Landingpage = () => {
 
     const navigate = useNavigate();
+    const username=useSelector(state=>state.auth.userData.name);
+    // console.log()
     const images = ["journeytruck1.jpg", "journeytruck.jpg"];
     return (
         <div className="w-full" >
             <div className="relative w-full bg-white">
                 <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
                     <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
+                        <div className='mnmsg'>
+                        <div className='font-medium text-base px-3 capitalize'>Hi {username},</div>
+                            
+                        <div className=' font-medium text-2xl px-3'>Welcome to <span className='animate-pul'>Teleport</span></div>
+                        </div>
                         <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
                             <div className="rounded-full bg-white p-1 px-2">
                                 <p className="text-sm font-medium">Happy&#x27; </p>
