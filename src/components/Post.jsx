@@ -138,7 +138,7 @@ export default function Post() {
                                         <h3 className="font-semibold leading-snug sm:pr-8 text-gray-700">
                                             Phone No:&nbsp;
                                         </h3>
-                                        <p className="text-sm font-semibold">{ride.Riderphone? ride.Riderphone: "N/A"}</p>
+                                        <p className="text-sm font-semibold text-center">{ride.Riderphone? ride.Riderphone: "N/A"}</p>
                                     </div>
 
                                 </div>
@@ -155,13 +155,22 @@ export default function Post() {
                             </div>
 
                         </div>
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-center items-center flex-col gap-3">
                             <Link to={`tel:${ride.Riderphone}`}>
                                 <button
                                     type="button"
                                     className="min-w-max rounded-full bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                                 >
                                     Call Rider
+                                </button>
+                            </Link>
+                            <Link to={`https://wa.me/${ride.Riderphone}/?text=Hi%20${ride.Ridername}%20this%20message%20is%20regarding%20your%20Teleport%20ride%20from%20${ride.From}%20to%20${ride.To}%20on%20${ride.DateofRide}`}>
+                                <button
+                                    type="button"
+                                    className="min-w-max rounded-full bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                                >
+                                    
+                                    Whatsapp
                                 </button>
                             </Link>
                         </div>

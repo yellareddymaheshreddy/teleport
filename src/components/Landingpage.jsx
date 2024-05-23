@@ -8,7 +8,6 @@ const Landingpage = () => {
 
     const navigate = useNavigate();
     const username=useSelector(state=>state.auth.userData.name);
-    // console.log()
     const images = ["journeytruck1.jpg", "journeytruck.jpg"];
     return (
         <div className="w-full" >
@@ -34,7 +33,7 @@ const Landingpage = () => {
                         </p>
                         <div className="my-8 flex items-center justify-center gap-6 space-x-2">
                             <div className='flex gap-2'>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" height="50px" width="50px" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5.5" cy="17.5" r="3.5"></circle> <circle cx="18.5" cy="17.5" r="3.5"></circle> <path d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path> </g></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" height="50px" width="50px" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="5.5" cy="17.5" r="3.5"></circle> <circle cx="18.5" cy="17.5" r="3.5"></circle> <path d="M15 6a1 1 0 100-2 1 1 0 000 2zm-3 11.5V14l-3-3 4-3 2 3h2"></path> </g></svg>
 
                                 <button
                                     onClick={() => {
