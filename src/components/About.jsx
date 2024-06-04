@@ -29,7 +29,7 @@ const About = () => {
               Our Team
             </p>
             <p className="max-w-4xl text-base text-gray-700 md:text-xl">
-              This is our first big project .
+              This is our first project .
             </p>
             <div></div>
           </div>
