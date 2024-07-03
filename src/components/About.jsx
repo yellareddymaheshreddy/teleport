@@ -47,14 +47,14 @@ const About = () => {
               Front End Developer
             </p>
           </div>
-          {/* <div className="rounded-md border">
+           <div className="rounded-md border">
             <img
-              src=""
+              src="./garv.jpg"
               alt="Victória Silva"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Victória Silva
+              Garv Agarwal
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Back-end developer
@@ -62,12 +62,12 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
-              src=""
+              src="./balu.jpg"
               alt="Gabrielle Fernandez"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Gabrielle Fernandez
+              Balasubramanyam
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Sales
@@ -75,12 +75,12 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
-              src=""
+              src="./nithine.jpg"
               alt="Sadie Lewis"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Sadie Lewis
+              K Nithin
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Sales
@@ -88,8 +88,7 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
-              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;crop=faces&amp;fit=crop&amp;h=600&amp;w=600"
-              alt="Thilde Olaisen"
+              src="./adarsh.jpg"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
@@ -98,7 +97,7 @@ const About = () => {
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Marketing Lead
             </p>
-          </div> */}
+          </div> 
 
         </div>
         {/* <div className="flex flex-col items-center gap-x-4 gap-y-4 py-16 md:flex-row">

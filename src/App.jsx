@@ -24,6 +24,7 @@ function App() {
     service.getPosts().then((rides) => {
       if (rides) {
       dispatch(setrides(rides.documents))
+      console.log("setting rides")
       }
     })
     authService.getCurrentUser()

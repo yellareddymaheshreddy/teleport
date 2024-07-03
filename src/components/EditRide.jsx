@@ -10,6 +10,7 @@ const EditRide = () => {
     const allrides=useSelector(state=>state.rides.rides)
 
     useEffect(() => {
+        console.log("reading rides teleport:" ,allrides)
         allrides.map((ride)=>{
             if(ride.Rideid==slug){
                 setrides(ride)
