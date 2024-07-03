@@ -29,7 +29,7 @@ const About = () => {
               Our Team
             </p>
             <p className="max-w-4xl text-base text-gray-700 md:text-xl">
-              This is our first project .
+              {/* This is our first project . */}
             </p>
             <div></div>
           </div>
@@ -92,7 +92,7 @@ const About = () => {
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Thilde Olaisen
+              Adarsh Biradar
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Marketing Lead
