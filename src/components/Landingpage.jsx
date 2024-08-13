@@ -67,7 +67,7 @@ const Landingpage = () => {
                         </div>
                     </div>
                     <div className="hidden relative lg:col-span-5 lg:block lg:-mr-8 xl:col-span-6">
-                        <Carousel image={images[1]} />
+                        <Carousel image={images[0]} />
                     </div>
                 </div>
             </div>
