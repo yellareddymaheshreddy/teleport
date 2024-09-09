@@ -346,24 +346,24 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-                <section class="px-4 mx-2 py-10 md:px-0 border rounded-lg shadow-lg md:mx-8">
-                            <div class="mx-auto max-w-4xl">
-                                <div class="md:flex md:items-center md:justify-center md:space-x-14">
-                                    <div class="relative flex-shrink-0">
+                <section className="px-4 mx-2 py-10 md:px-0 border rounded-lg shadow-lg md:mx-8">
+                            <div className="mx-auto max-w-4xl">
+                                <div className="md:flex md:items-center md:justify-center md:space-x-14">
+                                    <div className="relative flex-shrink-0">
                                         <img
-                                            class="relative h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
-                                            src="./Developer.webp"
+                                            className="relative h-32 w-32 md:h-48 md:w-48 rounded-full object-cover"
+                                            src="./mahesh1.png"
                                             alt=""
                                         />
                                     </div>
-                                    <div class="mt-10 md:mt-0 ">
+                                    <div className="mt-10 md:mt-0 ">
                                         <blockquote>
-                                            <p class="text-xl text-black">
+                                            <p className="text-xl text-black">
                                                 “This website is developed only for making <span className='text-black font-medium'>Friends</span> not for making  Money!”
                                             </p>
                                         </blockquote>
-                                        <p class="mt-7 text-lg font-semibold text-black">Mahesh Reddy</p>
-                                        <p class="mt-1 text-base text-gray-600"> Developer</p>
+                                        <p className="mt-7 text-lg font-semibold text-black">Mahesh Reddy</p>
+                                        <p className="mt-1 text-base text-gray-600"> Developer</p>
                                     </div>
                                 </div>
                             </div>

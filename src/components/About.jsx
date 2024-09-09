@@ -14,9 +14,9 @@ const About = () => {
           <p className="text-3xl font-bold text-gray-900 md:text-5xl md:leading-10">
             Made with love, right here in India
           </p>
-          
+
         </div>
-        
+
         <hr className="mt-8" />
         <div className="mt-10 flex items-center">
           <div className="space-y-6 md:w-3/4">
@@ -34,10 +34,37 @@ const About = () => {
             <div></div>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-4 gap-y-6  py-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 gap-y-6  py-8 md:grid-cols-2 lg:grid-cols-3">
+          
           <div className="rounded-md border">
             <img
-              src="./Developer.webp"
+              src="./ganesh.png"
+              alt="Victória Silva"
+              className="h-[300px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              Sai Ganesh
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Back-end developer
+            </p>
+          </div>
+          <div className="rounded-md border">
+            <img
+              src="./rajeshtemp.png"
+              alt="Gabrielle Fernandez"
+              className="h-[300px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              O. Rajesh
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Sales
+            </p>
+          </div>
+          <div className="rounded-md border">
+            <img
+              src="./mahesh1.png"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
@@ -47,40 +74,14 @@ const About = () => {
               Front End Developer
             </p>
           </div>
-           <div className="rounded-md border">
-            <img
-              src="./garv.jpg"
-              alt="Victória Silva"
-              className="h-[300px] w-full rounded-lg object-cover "
-            />
-            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Garv Agarwal
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Back-end developer
-            </p>
-          </div>
           <div className="rounded-md border">
             <img
-              src="./balu.jpg"
-              alt="Gabrielle Fernandez"
-              className="h-[300px] w-full rounded-lg object-cover "
-            />
-            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Balasubramanyam
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Sales
-            </p>
-          </div>
-          <div className="rounded-md border">
-            <img
-              src="./nithine.jpg"
+              src="./sai.png"
               alt="Sadie Lewis"
               className="h-[300px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              K Nithin
+              Sai Krishna
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Sales
@@ -97,7 +98,19 @@ const About = () => {
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
               Marketing Lead
             </p>
-          </div> 
+          </div>
+          <div className="rounded-md border">
+            <img
+              src="./rishitha.png"
+              className="h-[300px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              Rishitha Sree
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Marketing Lead
+            </p>
+          </div>
 
         </div>
         {/* <div className="flex flex-col items-center gap-x-4 gap-y-4 py-16 md:flex-row">
@@ -127,7 +140,7 @@ const About = () => {
         </div> */}
       </div>
       {/* <hr className="mt-6" /> */}
-      
+
     </div>
 
   )
