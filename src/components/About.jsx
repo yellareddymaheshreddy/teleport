@@ -76,7 +76,7 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
-              src="./sai.png"
+              src="./sai2.png"
               alt="Sadie Lewis"
               className="h-[300px] w-full rounded-lg object-cover "
             />
