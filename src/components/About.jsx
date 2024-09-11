@@ -35,24 +35,23 @@ const About = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 gap-4 gap-y-6  py-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="rounded-md border">
+            <img
+              src="./rishithapic.png"
+              className="h-[350px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              Rishitha Sree
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Marketing Lead
+            </p>
+          </div>
           
           <div className="rounded-md border">
             <img
-              src="./ganesh.png"
-              alt="Victória Silva"
-              className="h-[300px] w-full rounded-lg object-cover "
-            />
-            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Sai Ganesh
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Back-end developer
-            </p>
-          </div>
-          <div className="rounded-md border">
-            <img
               src="./mahesh1.png"
-              className="h-[300px] w-full rounded-lg object-cover "
+              className="h-[350px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
               Mahesh Reddy
@@ -63,9 +62,22 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
+              src="./ganesh.png"
+              alt="Victória Silva"
+              className="h-[350px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              Sai Ganesh
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Back-end developer
+            </p>
+          </div>
+          <div className="rounded-md border">
+            <img
               src="./rajeshtemp.png"
               alt="Gabrielle Fernandez"
-              className="h-[300px] w-full rounded-lg object-cover "
+              className="h-[350px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
               O. Rajesh
@@ -79,7 +91,7 @@ const About = () => {
             <img
               src="./sai2.png"
               alt="Sadie Lewis"
-              className="h-[300px] w-full rounded-lg object-cover "
+              className="h-[350px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
               Sai Krishna
@@ -91,7 +103,7 @@ const About = () => {
           <div className="rounded-md border">
             <img
               src="./adarsh.jpg"
-              className="h-[300px] w-full rounded-lg object-cover "
+              className="h-[350px] w-full rounded-lg object-cover "
             />
             <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
               Adarsh Biradar
@@ -100,18 +112,7 @@ const About = () => {
               Marketing Lead
             </p>
           </div>
-          <div className="rounded-md border">
-            <img
-              src="./rishitha.png"
-              className="h-[300px] w-full rounded-lg object-cover "
-            />
-            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Rishitha Sree
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Marketing Lead
-            </p>
-          </div>
+          
 
         </div>
         {/* <div className="flex flex-col items-center gap-x-4 gap-y-4 py-16 md:flex-row">
