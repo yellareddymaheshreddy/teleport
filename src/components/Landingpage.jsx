@@ -8,7 +8,7 @@ const Landingpage = () => {
 
     const navigate = useNavigate();
     const username=useSelector(state=>state.auth.userData.name);
-    const images = ["journeytruck1.jpg", "journeytruck.jpg"];
+    const images = ["ai.jpeg", "journeytruck.jpg"];
     return (
         <div className="w-full" >
             <div className="relative w-full bg-white">
