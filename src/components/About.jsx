@@ -51,6 +51,18 @@ const About = () => {
           </div>
           <div className="rounded-md border">
             <img
+              src="./mahesh1.png"
+              className="h-[300px] w-full rounded-lg object-cover "
+            />
+            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
+              Mahesh Reddy
+            </p>
+            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
+              Full-Stack Developer
+            </p>
+          </div>
+          <div className="rounded-md border">
+            <img
               src="./rajeshtemp.png"
               alt="Gabrielle Fernandez"
               className="h-[300px] w-full rounded-lg object-cover "
@@ -62,18 +74,7 @@ const About = () => {
               Sales
             </p>
           </div>
-          <div className="rounded-md border">
-            <img
-              src="./mahesh1.png"
-              className="h-[300px] w-full rounded-lg object-cover "
-            />
-            <p className="mt-6 w-full px-2 text-xl  font-semibold text-gray-900">
-              Mahesh Reddy
-            </p>
-            <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Full-Stack Developer
-            </p>
-          </div>
+          
           <div className="rounded-md border">
             <img
               src="./sai2.png"
