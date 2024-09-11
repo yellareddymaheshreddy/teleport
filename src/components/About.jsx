@@ -71,7 +71,7 @@ const About = () => {
               Mahesh Reddy
             </p>
             <p className="w-full px-2 pb-6 text-sm font-semibold text-gray-500">
-              Front End Developer
+              Full-Stack Developer
             </p>
           </div>
           <div className="rounded-md border">
